@@ -1,95 +1,95 @@
-# Кейси: як різні продукти стали різними сторінками
+# Case studies: how different products became different pages
 
-**Навіщо цей файл.** Він показує хід думки від фактів продукту до структури й прийомів. Форми звідси **не переносяться**. Якщо ловиш себе на думці «зроблю як у SOFA» чи «як у менеджері вікон», зупинись і пройди `content-architecture.md` §2–3 для свого продукту.
+**Why this file exists.** It shows the line of thinking from product facts to structure and devices. The forms here **don't carry over**. If you catch yourself thinking "I'll do it like SOFA" or "like the window manager", stop and go through `content-architecture.md` §2–3 for your product.
 
-Обидва лендинги зроблені з Claude за цим методом. Вони навмисно різні, бо різні продукти. Назву першого продукту приховано, бо він ще не запущений.
+Both landing pages were made with Claude using this method. They are different on purpose, because the products are different. The first product's name is hidden, because it hasn't launched yet.
 
 ---
 
-## Менеджер вікон для Mac (2026)
+## Mac window manager (2026)
 
-**Продукт.** Менеджер вікон для Mac. Зберігає, де стоїть кожне вікно на всіх дисплеях, як «сцену», і повертає все одною клавішею.
+**Product.** A window manager for Mac. It saves where every window sits across all displays as a "scene" and brings everything back with one key.
 
-**Аудиторія і рішення.**
-- Категорія знайома: менеджери вікон люди знають.
-- Рішення дешеве: безкоштовна версія і недорога одноразова покупка Pro.
-- Отже, механіку досить показати за секунду. Решта сторінки — про те, як це живе на справжньому столі.
+**Audience and decision.**
+- The category is familiar: people know window managers.
+- The decision is cheap: a free version and an inexpensive one-time Pro purchase.
+- So it's enough to show the mechanic in a second. The rest of the page is about how it lives on a real desk.
 
-**Механіка одним реченням.** Натискаєш одну клавішу, і вікна на всіх дисплеях повертаються на свої місця.
+**Mechanic in one sentence.** You press one key, and the windows on all displays go back to their places.
 
-**Структура: 5 секцій, кожна з причиною.**
+**Structure: 5 sections, each with a reason.**
 
-| Питання відвідувача | Форма | Факт продукту, який її вимагав |
+| Visitor question | Form | Product fact that required it |
 |---|---|---|
-| Що це? | заголовок про одну клавішу і стіна з трьох намальованих моніторів, де сцени перемикаються | цінність у миттєвій зміні стану на кількох дисплеях |
-| Як викликати? | три способи: під вирізом камери, клавіші ⌥⌘1–9, меню-бар | у продукті справді три точки входу |
-| А автоматично можна? | таймлайн дня з календарними подіями | Pro перемикає сцени сам: коли підключаєш дисплей, відкриваєш апку або починається зустріч |
-| А якщо стіл змінився? | інтерактивні ситуації: рестарт, закрита апка, накладені вікна, ноутбук поїхав | головне заперечення — «зламається, щойно щось зміниться» |
-| Скільки коштує? | таблиця Free / Pro | модель — безкоштовно плюс одноразова покупка |
+| What is it? | a headline about one key and a wall of three drawn monitors where scenes switch | the value is in an instant change of state across several displays |
+| How do I trigger it? | three ways: under the camera notch, the ⌥⌘1–9 keys, the menu bar | the product really has three entry points |
+| Can it happen automatically? | a timeline of the day with calendar events | Pro switches scenes on its own: when you connect a display, open an app or a meeting starts |
+| What if my desk changes? | interactive situations: restart, a closed app, overlapping windows, the laptop moved away | the main objection is "it'll break as soon as something changes" |
+| How much does it cost? | a Free / Pro table | the model is free plus a one-time purchase |
 
-**Чого на сторінці нема і чому.**
-- Порівняння з конкурентами: категорія знайома, а різницю показує демка.
-- Схеми процесу: процес складається з одного кроку.
-- Waitlist: продукт уже можна завантажити.
-- Стіни фіч: фіч небагато, а всі важливі вже показані.
+**What's not on the page, and why.**
+- Competitor comparison: the category is familiar, and the demo shows the difference.
+- Process diagrams: the process is a single step.
+- Waitlist: the product can already be downloaded.
+- Feature walls: there aren't many features, and all the important ones are already shown.
 
-**Світ і прийоми.**
-- Залізо: алюмінієві монітори з назвами моделей і роздільністю, клавіші-кейкапи, виріз камери, меню-бар із годинником.
-- Службові рядки: «5 windows placed», «Matched by model and serial».
+**World and devices.**
+- Hardware: aluminum monitors with model names and resolutions, keycaps, the camera notch, a menu bar with a clock.
+- Status lines: "5 windows placed", "Matched by model and serial".
 
 ---
 
-## SOFA (колишній CNVS, вересень 2026)
+## SOFA (formerly CNVS, September 2026)
 
-**Продукт** ([trysofa.vercel.app](https://trysofa.vercel.app)). Mac-апка: нескінченне полотно, де поруч працюють кілька AI-агентів для коду (Claude Code, Codex та інші). Диригент ділить роботу на картки, борд проганяє кожну в окремому worktree, тести й рецензенти перевіряють, а людина приймає результат.
+**Product** ([trysofa.vercel.app](https://trysofa.vercel.app)). A Mac app: an infinite canvas where several AI coding agents (Claude Code, Codex and others) work side by side. The conductor splits the work into cards, the board runs each card in a separate worktree, tests and reviewers check it, and the person accepts the result.
 
-**Аудиторія і рішення.**
-- Категорія нова: у людини нема готового слова для «полотна з диригентом агентів».
-- Модель доступу: waitlist early birds, бо продукт ще не на продажі.
-- Отже, механіку треба пояснити, а доступ зробити привабливим уже зараз.
+**Audience and decision.**
+- The category is new: people have no ready word for "a canvas with a conductor of agents".
+- Access model: an early birds waitlist, because the product isn't on sale yet.
+- So the mechanic needs explaining, and access needs to feel attractive right now.
 
-**Механіка одним реченням.** Кажеш один раз, а команда агентів ділить роботу, робить і перевіряє її, і ти лише приймаєш.
+**Mechanic in one sentence.** You say it once, and a team of agents splits the work, does it and checks it, and you only accept it.
 
-**Структура: 9 секцій, кожна з причиною.**
+**Structure: 9 sections, each with a reason.**
 
-| Питання відвідувача | Форма | Факт продукту, який її вимагав |
+| Visitor question | Form | Product fact that required it |
 |---|---|---|
-| Що це? | «Figma for vibe coding.» і полотно з агентами в рамці монітора, яке можна тягати | продукт — це саме полотно, тож найкраще його відчути руками |
-| Хто там усередині? | проста схема ролей: ти, секретар, диригент, агенти, борд, коротка історія по кроках | ідея продукту у взаєминах ролей |
-| Що відбувається після запиту? | закріплена схема процесу з гілками, живими станами й кнопкою Skip | цінність у тому, що довгий розгалужений процес (план → прогін → ревʼю → фікси → merge) іде сам |
-| Як це відчувається? | сцена «Sit back and chill»: диван, сповіщення на подушках S·O·F·A | назва сама несе настрій і розшифровується як ролі |
-| Що саме вміє? | бенто з анімаціями: ліміти, диригенти, ревʼю, превʼю, файли | 6 фіч рівної ваги, кожну можна показати |
-| Чому не просто більше терміналів? | таблиця «хто робить роботу»: у терміналів «You» всюди, у SOFA лише в одному рядку | цінність саме в знятті ручної роботи з людини |
-| Як отримати? | панель early birds, форма угорі й унизу | модель — waitlist |
-| Скільки там усього? | нескінченна стіна з 54 фіч | широта фіч сама є аргументом для такого продукту |
-| Хто це робить? | цитата засновника | ранній продукт однієї людини |
+| What is it? | "Figma for vibe coding." and a canvas with agents in a monitor frame that you can drag | the product is the canvas itself, so the best way to get it is to feel it by hand |
+| Who's in there? | a simple role diagram: you, the secretary, the conductor, the agents, the board, a short step-by-step story | the product's idea lies in how the roles relate |
+| What happens after a request? | a pinned process diagram with branches, live states and a Skip button | the value is that a long branching process (plan → run → review → fixes → merge) runs on its own |
+| How does it feel? | the "Sit back and chill" scene: a sofa, notifications on the S·O·F·A cushions | the name itself carries the mood and spells out the roles |
+| What exactly can it do? | bento with animations: limits, conductors, review, previews, files | 6 features of equal weight, each one can be shown |
+| Why not just more terminals? | a "who does the work" table: terminals have "You" everywhere, SOFA has it in only one row | the value is exactly in taking manual work off the person |
+| How do I get it? | early birds panel, a form at the top and at the bottom | the model is a waitlist |
+| How much is in there? | an infinite wall of 54 features | for this kind of product, the breadth of features is itself an argument |
+| Who makes it? | a founder quote | an early product by one person |
 
-**Рішення, які підходять лише SOFA.** Для полотна з агентами вони працювали, для іншого продукту не мають сенсу:
-- «синій = ти» і єдине яскраве «You» в порівнянні;
-- кольори провайдерів;
-- рамки з сіткою точок, як на полотні;
-- текст у 1100px, великі блоки в 1280px, усе по центру;
-- Funnel Display і Funnel Sans, Phosphor duotone;
-- акронім S·O·F·A.
-
----
-
-## Антиприклад: застосунок для вивчення слів (вересень 2026)
-
-Перша версія цього скіла тримала секції SOFA як нумерований «шаблон». Лендинг для застосунку з картками для вивчення слів зібрали з тих самих номерів: демка в першому екрані, панорама процесу, бенто і порівняння. Автор сказав, що це специфічна історія однієї сторінки, а в кожного продукту вона має бути своя.
-
-**Урок.** Спершу треба спитати, чи є в продукті довгий розгалужений процес і чи цінність у знятті роботи з людини. Лише після цього можна брати панораму чи таблицю «хто робить роботу». Структуру цього застосунку (і будь-якого наступного продукту) виводь заново з його власної механіки: цей файл навмисно не підказує відповідь.
+**Decisions that fit only SOFA.** They worked for an AI agent canvas and make no sense for another product:
+- "blue = you" and the single bright "You" in the comparison;
+- provider colors;
+- frames with a dot grid, like on the canvas;
+- text at 1100px, large blocks at 1280px, everything centered;
+- Funnel Display and Funnel Sans, Phosphor duotone;
+- the S·O·F·A acronym.
 
 ---
 
-## Порівняння в один погляд
+## Anti-example: vocabulary flashcards app (September 2026)
 
-| | Менеджер вікон | SOFA |
+The first version of this skill kept SOFA's sections as a numbered "template". The landing page for a vocabulary flashcards app was assembled from the same numbers: a demo in the first screen, a process panorama, bento and a comparison. The author said this was the specific story of one page, and every product needs its own.
+
+**Lesson.** First ask whether the product has a long branching process and whether the value is in taking work off the person. Only then can you use a panorama or a "who does the work" table. Derive the structure of this app (and of any future product) from scratch, from its own mechanic: this file deliberately doesn't hint at the answer.
+
+---
+
+## Comparison at a glance
+
+| | Window manager | SOFA |
 |---|---|---|
-| Категорія | знайома | нова |
-| Доступ | завантаження плюс одноразова покупка | waitlist |
-| Секцій | 5 | 9 |
-| Фірмовий момент | стіна моніторів, де перемикаються сцени | полотно, яке можна тягати, і схема процесу |
-| Порівняння з конкурентами | нема | таблиця «хто робить роботу» |
-| Світ | залізо, клавіші, меню-бар | полотно, картки, курсори, диван |
-| Дія | завантажити / купити Pro | Join early birds |
+| Category | familiar | new |
+| Access | download plus one-time purchase | waitlist |
+| Sections | 5 | 9 |
+| Signature moment | a wall of monitors where scenes switch | a canvas you can drag, and a process diagram |
+| Competitor comparison | none | "who does the work" table |
+| World | hardware, keys, menu bar | canvas, cards, cursors, sofa |
+| Action | download / buy Pro | Join early birds |

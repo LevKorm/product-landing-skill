@@ -8,8 +8,6 @@ A [Claude Code](https://claude.com/claude-code) skill for product landing pages 
 
 It walks Claude from facts to a live site. First it gathers facts about the product. Then it derives the sections from the questions a visitor has, finds one signature moment in what the product actually does, and builds a visual language from the product's own world. It iterates with you in versions, adapts the page for mobile, deploys it to Vercel and, if you need one, wires a waitlist to Supabase.
 
-[Українською ↓](#українською)
-
 ## Why
 
 Most generated landing pages look alike, because the structure comes first and the product gets poured into it: hero, three feature cards, comparison, pricing, testimonials.
@@ -117,17 +115,6 @@ skills/product-landing/
   - Vercel CLI, for deploy;
   - Supabase MCP or CLI, for the waitlist;
   - Google Chrome, to render the OG image and icons.
-
-The skill's instructions are written in Ukrainian. Claude follows them fine and answers in your language.
-
-## Українською
-
-Скіл для Claude Code, який робить лендинг продукту від фактів до живого сайту. Він дає метод, а не шаблон:
-- секції виводяться з питань відвідувача;
-- фірмовий момент — з головної механіки продукту;
-- візуальні прийоми — зі світу самого продукту.
-
-Перед кодом є перевірка на шаблонність: кожна форма має назвати факт продукту, який її вимагає. Далі йдуть версії з фідбеком, мобільна адаптація, деплой на Vercel і, за потреби, waitlist у Supabase. Встановлення описано вище.
 
 ## License
 

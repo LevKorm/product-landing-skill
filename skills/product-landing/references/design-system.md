@@ -1,114 +1,114 @@
-# Візуальна мова: вивести стиль із продукту і не скотитися в AI-слоп
+# Visual language: derive the style from the product and don't slide into AI slop
 
-Стиль не обирається з каталогу. Він збирається з того, з чого складається світ продукту. Тому в цьому файлі метод і обмеження, а не готова палітра, сітка чи набір анімацій.
+Style is not picked from a catalog. It is assembled from what the product's world is made of. So this file holds a method and constraints, not a ready palette, grid or animation set.
 
-## 1. Design read і план до коду
+## 1. Design read and a plan before code
 
-Спершу одним рядком: «Це <тип сторінки> для <аудиторії>, мовою <вайб>, у світі <з чого зроблений продукт>». Потім компактний план:
-- **Колір:** 4–6 hex з ролями (фон, поверхня, чорнило, другорядний текст, лінії, акцент). Кольори сутностей і станів — лише якщо в продукті є сутності й стани, які сторінка показує.
-- **Шрифти:** display (характерний, стримано), текстовий, службовий за потреби.
-- **Композиція:** одна фраза плюс чому саме така для цього продукту.
-- **Прийоми** (3–4) з лексики продукту.
+First, one line: "This is a <page type> for <audience>, in a <vibe> voice, in a world of <what the product is made of>". Then a compact plan:
+- **Color:** 4–6 hex values with roles (background, surface, ink, secondary text, lines, accent). Add entity and state colors only if the product has entities and states that the page shows.
+- **Fonts:** display (with character, restrained), text, utility if needed.
+- **Composition:** one phrase plus why it is right for this product.
+- **Devices** (3–4) from the product's vocabulary.
 
-Звір план зі штампами (§8) і з уже зробленими лендингами (`case-studies.md`, памʼять). Все, що звучить як дефолт або як копія, заміни і скажи, що саме замінив.
+Check the plan against the clichés (§8) and against landing pages already made (`case-studies.md`, memory). Replace anything that sounds like a default or a copy, and say what exactly you replaced.
 
-## 2. Світ продукту → прийоми
+## 2. The product's world → devices
 
-Випиши, з чого складається продукт:
-- **предмети** (вікно, картка, рахунок, дисплей, клавіша);
-- **одиниці** (секунди, сцени, слова на день, гривні);
-- **стани** (працює, пауза, вивчено, прострочено);
-- **жести** (перетягнути, перевернути, натиснути, свайпнути);
-- **матеріал і середовище** (метал і скло заліза, папір, термінал, полотно, кухня).
+List what the product is made of:
+- **objects** (window, card, bill, display, key);
+- **units** (seconds, scenes, words per day, dollars);
+- **states** (running, paused, learned, overdue);
+- **gestures** (drag, flip, press, swipe);
+- **material and environment** (the metal and glass of hardware, paper, terminal, canvas, kitchen).
 
-Кожен пункт — кандидат у прийом. Прийоми одного продукту на сторінці іншого виглядають чужими, і це нормально: так і має бути.
+Each item is a candidate for a device. Devices from one product look foreign on another product's page, and that is fine: that is how it should be.
 
-| Продукт | Світ | Прийоми, які з нього виросли |
+| Product | World | Devices that grew out of it |
 |---|---|---|
-| Менеджер вікон для Mac | залізо: алюмінієві монітори, клавіші, виріз камери, меню-бар | намальовані монітори зі сценами, клавіші 1–9, виклик сцени з-під вирізу, тарифи як етикетки |
-| SOFA, полотно з AI-агентами | полотно й канбан: рамки виділення, піни, курсори, картки, статуси | обведене слово в заголовку, пін-примітка над демкою, курсори агентів на плитках, живі статуси карток |
-| Утиліта нічних бекапів (гіпотетично) | серверна шафа, ночі, версії файлів, диски | ряд ночей замість таймлайну фіч, індикатор диска як шкала, «версія від 02:00» як підпис |
+| Mac window manager | hardware: aluminum monitors, keys, the camera notch, the menu bar | drawn monitors with scenes, keys 1–9, calling up a scene from under the notch, pricing plans as labels |
+| SOFA, AI agent canvas | canvas and kanban: selection frames, pins, cursors, cards, statuses | a circled word in the headline, a pinned note above the demo, agent cursors on tiles, live card statuses |
+| Nightly backup utility (hypothetical) | server rack, nights, file versions, disks | a row of nights instead of a feature timeline, a disk indicator as a scale, "version from 02:00" as a caption |
 
-Склади таку таблицю для свого продукту перш ніж малювати. Якщо колонка «світ» порожня, спершу повернись у discovery.
+Build a table like this for your product before drawing. If the "world" column is empty, go back to discovery first.
 
-## 3. Колір
+## 3. Color
 
-- **Визнач, що означає акцент саме тут.** Дія користувача, бренд чи «готово»? Одне значення на всю сторінку. Якщо акцент усюди, він перестає щось означати, а великі площі акценту глушать саму кнопку дії.
-- **Кольори сутностей** (провайдери, категорії, люди) — лише коли їх треба розрізняти. Кожна сутність тримає свій колір стабільно на всій сторінці.
-- **Кольори станів** (ок, увага, стоп) окремі від акценту. Для тексту на світлому фоні беруть темніші варіанти, для заливок — яскраві.
-- **Токени:** на кожну роль колір і колір тексту на ньому. Контраст рахуй: білий на помаранчевому чи зеленому часто не проходить.
-- **Тема** випливає з продукту і бренду. Дві теми через токени: світла в `:root`, темна через `prefers-color-scheme` і `[data-theme]`. Фон `body` явно з токена.
-- **Нейтральний сірий** з легким відтінком у бік акценту, а не чистий середній сірий.
+- **Decide what the accent means here.** The user's action, the brand, or "done"? One meaning for the whole page. If the accent is everywhere, it stops meaning anything, and large accent areas drown out the action button itself.
+- **Entity colors** (providers, categories, people) are only for cases when entities need to be told apart. Each entity keeps its color consistently across the whole page.
+- **State colors** (ok, warning, stop) are separate from the accent. Use darker variants for text on a light background and bright ones for fills.
+- **Tokens:** for each role, a color and the color of text on it. Calculate contrast: white on orange or green often fails.
+- **Theme** follows from the product and brand. Two themes through tokens: light in `:root`, dark through `prefers-color-scheme` and `[data-theme]`. The `body` background comes explicitly from a token.
+- **Neutral gray** with a slight tint toward the accent, not a pure mid gray.
 
-## 4. Типографіка
+## 4. Typography
 
-- **Display** з характером, який пасує продукту: інженерно-точний, теплий, редакційний, грайливий. Шрифт з попереднього лендингу не бери автоматично.
-- **Текст** — спокійний sans, парний до display.
-- **Моно** лише там, де в продукті справді є код, термінал чи назви команд. Моно в підписах і чипах читається як «занадто технічно».
-- **Шкала** фіксована і дотримується, `text-wrap: balance` для заголовків, ~65 знаків у рядку тексту.
-- **Прийоми заголовків** беруться з лексики продукту (§2), а не зі списку ефектів.
+- **Display** with a character that suits the product: engineering-precise, warm, editorial, playful. Don't reuse the font from the previous landing page automatically.
+- **Text** is a calm sans that pairs with the display.
+- **Mono** only where the product really has code, a terminal or command names. Mono in captions and chips reads as "too technical".
+- **The scale** is fixed and followed, `text-wrap: balance` for headlines, ~65 characters per line of body text.
+- **Headline devices** come from the product's vocabulary (§2), not from a list of effects.
 
-## 5. Іконки, логотипи, картинки
+## 5. Icons, logos, images
 
-- **Іконки з однієї бібліотеки, не від руки.** Дефолт — Phosphor: SVG із `cdn.jsdelivr.net/npm/@phosphor-icons/core@2.1.1/assets/<weight>/<name>-<weight>.svg`, вшиті спрайтом `<symbol id="i-name">` і `<svg><use href="#i-name"/></svg>`. Вагу (regular, duotone, fill) вибирай під стиль, одну на сторінку.
-- **Логотипи брендів** беруться з ассетів продукту або з simple-icons (CC0).
-- **Жодних фейкових скріншотів з div-прямокутників.** Замість них справжня інтерактивна міні-версія, справжній скріншот або чесна схема, що не прикидається інтерфейсом.
-- **Ілюстрації — прості форми:** рамки, заокруглені прямокутники, контурний текст, схематичні предмети зі світу продукту. Людей і складних персонажів не малювати.
+- **Icons from one library, not hand-drawn.** The default is Phosphor: SVG from `cdn.jsdelivr.net/npm/@phosphor-icons/core@2.1.1/assets/<weight>/<name>-<weight>.svg`, inlined as a sprite `<symbol id="i-name">` and `<svg><use href="#i-name"/></svg>`. Pick the weight (regular, duotone, fill) to match the style, one per page.
+- **Brand logos** come from the product's assets or from simple-icons (CC0).
+- **No fake screenshots made of div rectangles.** Instead, use a real interactive mini version, a real screenshot, or an honest diagram that does not pretend to be an interface.
+- **Illustrations are simple shapes:** frames, rounded rectangles, outlined text, schematic objects from the product's world. Don't draw people or complex characters.
 
-## 6. Композиція
+## 6. Composition
 
-Вибирай під продукт і вайб, а не за звичкою:
+Choose for the product and the vibe, not out of habit:
 
-| Композиція | Коли пасує |
+| Composition | When it fits |
 |---|---|
-| Усе по центру, вузька колонка тексту, широкі візуали | спокійний тон, історія йде зверху вниз, візуали — головне |
-| Розділений перший екран (текст і візуал поруч) | продукт найкраще показати одним великим об'єктом поруч із тезою |
-| Асиметрична редакційна сітка | багато тексту й характеру, бренд ближчий до медіа |
-| Візуал на всю ширину і текст поверх | залізо, фото, атмосфера |
-| Короткі екрани, кожен про одну ідею | простий продукт, 3–5 тез |
-| Довга розповідь зі схемами | складний продукт у новій категорії |
+| Everything centered, a narrow text column, wide visuals | a calm tone, the story runs top to bottom, the visuals are the main thing |
+| A split first screen (text and visual side by side) | the product is best shown as one large object next to the claim |
+| An asymmetric editorial grid | lots of text and character, the brand is closer to media |
+| A full-width visual with text on top | hardware, photos, atmosphere |
+| Short screens, each about one idea | a simple product, 3–5 claims |
+| A long story with diagrams | a complex product in a new category |
 
-- **Ширини** задай двома токенами (текст і великі блоки), щоб на 1440+ сторінка не розтягувалась.
-- **Рамки навколо візуалів** потрібні тоді, коли в самому продукті є вікна чи полотно. Інакше не обрамлюй усе підряд.
-- **Не все картка:** тінь і межа лише там, де об'єкт справді окремий.
-- **Підписи рамок** ставлять усередині або заголовком над рамкою, а не білою плашкою, що розрізає межу.
+- **Widths** are set with two tokens (text and large blocks), so the page does not stretch at 1440+.
+- **Frames around visuals** are needed when the product itself has windows or a canvas. Otherwise don't frame everything.
+- **Not everything is a card:** shadow and border only where the object is truly separate.
+- **Frame labels** go inside the frame or as a heading above it, not as a white tag that cuts through the border.
 
-## 7. Рух
+## 7. Motion
 
-Кожна анімація відповідає на «що тут відбувається». Вибирай тип за тим, що треба пояснити:
+Every animation answers "what is happening here". Pick the type by what needs explaining:
 
-| Що пояснити | Тип руху |
+| What to explain | Type of motion |
 |---|---|
-| Миттєву зміну стану | перехід «до → після» по кліку або в циклі |
-| Послідовність дій | покрокова історія з підписом кроку |
-| Потік через систему | схема, якою рухаються жетони чи повідомлення |
-| Живий статус | тихі мікроанімації: прогрес, лічильник, пульс, хвиля звуку |
-| Пряму взаємодію | те, що можна потягнути, перевернути, натиснути |
-| Настрій | повільна атмосфера. Рідко і лише тоді, коли настрій — частина цінності |
+| An instant change of state | a "before → after" transition on click or in a loop |
+| A sequence of actions | a step-by-step story with a caption for each step |
+| Flow through a system | a diagram along which tokens or messages move |
+| Live status | quiet micro-animations: progress, counter, pulse, sound wave |
+| Direct interaction | something you can drag, flip, press |
+| Mood | slow atmosphere. Rarely, and only when the mood is part of the value |
 
-- **Анімації, привʼязані до скролу** (`view-timeline`, `animation-range`), і закріплені секції — дорогий інструмент. Вони виправдані, коли розповідь справді довга. Потрібні фолбек без підтримки браузера, `prefers-reduced-motion`, кнопка «пропустити» і окремий мобільний вигляд.
-- **Одна оркестрована історія** краща за розкидані ефекти.
-- **Цикли зупиняє IntersectionObserver,** коли вони поза екраном. Під `prefers-reduced-motion` усе статичне й у завершеному стані.
-- **Сторінка в спокої читається:** контент не ховається за `opacity:0` в очікуванні скролу.
+- **Scroll-driven animations** (`view-timeline`, `animation-range`) and pinned sections are an expensive tool. They are justified when the story is really long. They need a fallback for browsers without support, `prefers-reduced-motion`, a "skip" button and a separate mobile view.
+- **One orchestrated story** beats scattered effects.
+- **Loops are paused by IntersectionObserver** when they are off screen. Under `prefers-reduced-motion`, everything is static and in its finished state.
+- **The page reads at rest:** content does not hide behind `opacity:0` waiting for scroll.
 
-## 8. Штампи, яких уникати (якщо користувач сам не просить)
+## 8. Clichés to avoid (unless the user asks for them)
 
-**AI-дефолти**
-- кремовий фон + сериф + теракота; чорний фон + один кислотний акцент; фіолетово-синій градієнт;
-- Inter чи Space Grotesk як «безпечний» вибір; емодзі як маркери секцій;
-- три однакові картки в ряд; дрібний капс-підпис над кожною секцією; нумерація 01/02/03 без справжньої послідовності;
-- довгі тире; «seamless», «unleash», «elevate», «Quietly trusted by»;
-- фейкові скріншоти з div; ілюстрації людей; «Jane Doe» і «Acme»;
-- всюди однаковий радіус і тінь; сірий без відтінку;
-- «BETA» чи банери версій у першому екрані без причини;
-- моно в усіх підписах; акцент на кожному елементі.
+**AI defaults**
+- cream background + serif + terracotta; black background + a single acid accent; purple-blue gradient;
+- Inter or Space Grotesk as the "safe" choice; emoji as section markers;
+- three identical cards in a row; a small all-caps label above every section; 01/02/03 numbering without a real sequence;
+- em dashes; "seamless", "unleash", "elevate", "Quietly trusted by";
+- fake screenshots made of divs; illustrations of people; "Jane Doe" and "Acme";
+- the same radius and shadow everywhere; gray without a tint;
+- "BETA" or version banners in the first screen for no reason;
+- mono in every caption; an accent on every element.
 
-**Власні шаблони.** Повтор структури чи фірмового моменту з попереднього лендингу без того самого факту в продукті — теж слоп. Наприклад: схема процесу, таблиця «хто робить роботу», нескінченна стіна фіч, акронім назви, демка в рамці монітора.
+**Your own templates.** Repeating a structure or signature moment from a previous landing page without the same fact in the product is slop too. For example: a process diagram, a "who does the work" table, an endless feature wall, a name acronym, a demo inside a monitor frame.
 
-## 9. Технічні пастки
+## 9. Technical traps
 
-- **Нащадкові селектори на кшталт `.hub svg`** чіпляють іконки всередині логотипів і зсувають їх. Бери дочірній `.hub > svg`.
-- **Фіксована висота карток** призводить до переповнення. Після збірки скрипт порівнює низ останнього дочірнього елемента з низом картки.
-- **Однакові id** у секції й діаграмі ламають якорі та скрипти.
-- **Закріплена секція з масштабованим полотном:** масштаб рахуй від вільної висоти мінус відступи й заголовок.
-- **Артефакт на claude.ai блокує зовнішні fetch і картинки.** Шрифти лише з Google Fonts, решту вшивати. Форма в артефакті не надсилатиме, це нормально.
+- **Descendant selectors like `.hub svg`** catch icons inside logos and shift them. Use the child selector `.hub > svg`.
+- **Fixed card heights** lead to overflow. After the build, a script compares the bottom of the last child element with the bottom of the card.
+- **Duplicate ids** in a section and a diagram break anchors and scripts.
+- **A pinned section with a scaled canvas:** compute the scale from the free height minus padding and the heading.
+- **An artifact on claude.ai blocks external fetches and images.** Load fonts only from Google Fonts and inline everything else. A form in the artifact will not submit, and that is fine.

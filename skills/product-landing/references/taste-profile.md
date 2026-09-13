@@ -1,37 +1,37 @@
-# Профіль смаку користувача
+# User taste profile
 
-Тут записано смак людини, для якої робляться лендинги. Він переноситься між продуктами. Файл заповнюється з фідбеку (див. `feedback-loop.md`, «Смак чи рішення продукту»). Якщо профіль порожній, працюй без нього, а після першого раунду правок запиши, що дізнався.
+This file records the taste of the person the landing pages are made for. It carries over between products. It is filled in from feedback (see `feedback-loop.md`, "Taste or product decision"). If the profile is empty, work without it, and after the first round of edits record what you learned.
 
-Сюди не пишуть рішення конкретної сторінки: палітру продукту, його структуру, фірмовий момент. Вони живуть у брифі свого лендинга.
+Don't record decisions for a specific page here: the product's palette, its structure, its signature moment. They live in the brief of their own landing page.
 
-## Як читати профіль
+## How to read the profile
 
-- **Переноситься** — дефолт для будь-якого продукту, поки користувач не скаже інше.
-- **Гіпотеза** — спрацювало один-два рази. Звір із продуктом і брендом. Якщо продукт тягне інакше, скажи про це і запропонуй варіант.
-- **Відкинуто** — те, що людині вже не сподобалось, з причиною. Не повторювати без прямого запиту.
+- **Carries over:** the default for any product until the user says otherwise.
+- **Hypothesis:** worked once or twice. Check it against the product and the brand. If the product pulls in another direction, say so and offer an option.
+- **Rejected:** what the person already disliked, with the reason. Don't repeat it without a direct request.
 
-## Переноситься
+## Carries over
 
-<!-- Приклади форми запису (замініть своїми):
-- **Сканованість:** іконки, короткі картки, візуал замість абзаців. Багато тексту не подобається.
-- **Версії:** кілька варіантів локально з перемикачем, у прод лише фінальна.
-- **Своя структура для кожного продукту:** не копіювати секції з попередніх лендингів.
+<!-- Examples of the entry format (replace with your own):
+- **Scannability:** icons, short cards, visuals instead of paragraphs. Doesn't like a lot of text.
+- **Versions:** several variants locally with a switcher, only the final one in production.
+- **Own structure for every product:** don't copy sections from previous landing pages.
 -->
 
-## Гіпотези
+## Hypotheses
 
-<!-- Приклади форми запису:
-- **Тема:** частіше обирає світлу. Для темного бренду спитати.
-- **Жива демка в першому екрані** сподобалась на продукті з сильним UI. Для API не потрібна.
+<!-- Examples of the entry format:
+- **Theme:** usually picks light. Ask for a dark brand.
+- **Live demo in the first screen** was liked on a product with a strong UI. Not needed for an API.
 -->
 
-## Відкинуто
+## Rejected
 
-<!-- Приклади форми запису:
-- **Люди на ілюстраціях:** не малювати, лише прості форми. Причина: відволікають і виглядають дешево.
-- **Суцільна яскрава панель CTA:** «кричить». Краще світла з контуром і яскравою кнопкою.
+<!-- Examples of the entry format:
+- **People in illustrations:** don't draw them, only simple shapes. Reason: they distract and look cheap.
+- **Solid bright CTA panel:** "screams". Better a light one with an outline and a bright button.
 -->
 
-## Джерела
+## Sources
 
-<!-- Де й коли записано правку: продукт, дата, коротко слова користувача. -->
+<!-- Where and when the edit was recorded: product, date, the user's words in short. -->

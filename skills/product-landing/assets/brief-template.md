@@ -1,68 +1,68 @@
-# Landing brief: <Назва продукту>
+# Landing brief: <Product name>
 
-> Оновлено: <дата>. Джерела: <памʼять / docs / код / розмова>.
+> Updated: <date>. Sources: <memory / docs / code / conversation>.
 
 ## One-liner
-<Що це одним реченням, для кого і яку роботу знімає.>
+<What it is in one sentence, who it is for, and what job it takes off their hands.>
 
-## Headline-кандидати
-1. <Слова засновника, якщо є>
-2. <Варіант>
-3. <Варіант>
+## Headline candidates
+1. <The founder's words, if any>
+2. <Option>
+3. <Option>
 
-## Аудиторія
-- Хто: <роль, контекст>
-- Що використовує зараз: <альтернативи>
-- Рівень обізнаності: <не знає проблему / знає проблему / знає категорію / знає продукт>
-- Категорія: <нова, треба пояснювати механіку / знайома, досить показати за секунду>
-- Тип рішення: <безкоштовно / дешева покупка / підписка / B2B / waitlist>
-- Головне заперечення: <«навіщо, якщо є X» / «а якщо зламається» / …>
+## Audience
+- Who: <role, context>
+- What they use now: <alternatives>
+- Awareness level: <unaware of the problem / knows the problem / knows the category / knows the product>
+- Category: <new, the mechanic needs explaining / familiar, showing it in a second is enough>
+- Decision type: <free / cheap purchase / subscription / B2B / waitlist>
+- Main objection: <"why bother if X exists" / "what if it breaks" / …>
 
-## Головна механіка
-<Людина робить ___, і відбувається ___.>
+## Core mechanic
+<A person does ___, and ___ happens.>
 
-Фірмовий момент: <візуал, що показує це речення з найменшою кількістю тексту>. Перевірка: з назвою іншого продукту він розвалюється? <так / ні>
+Signature moment: <a visual that shows this sentence with the least text>. Check: does it fall apart with another product's name? <yes / no>
 
-## Опори (3–5)
-| Теза | Доказ (конкретно) | Джерело |
+## Pillars (3–5)
+| Claim | Evidence (specific) | Source |
 |---|---|---|
-| <…> | <число / поведінка / приклад> | `<шлях до файлу або документ>` |
+| <…> | <number / behavior / example> | `<path to file or document>` |
 
-## Відмінності (чесно)
-<Окрема секція потрібна? Якщо ні, одним рядком чому.>
+## Differences (honest)
+<Is a separate section needed? If not, one line on why.>
 
-| Категорія конкурентів | Як там | Як у нас | Примітка |
+| Competitor category | How they do it | How we do it | Note |
 |---|---|---|---|
-| <…> | <…> | <…> | станом на <дата>, за публічними доками |
+| <…> | <…> | <…> | as of <date>, based on public docs |
 
-## Світ продукту
-- Предмети: <…>
-- Одиниці: <…>
-- Стани: <…>
-- Жести: <…>
-- Матеріал і середовище: <…>
-- Прийоми для дизайну, що з цього виростають: <…>
+## The product's world
+- Objects: <…>
+- Units: <…>
+- States: <…>
+- Gestures: <…>
+- Material and environment: <…>
+- Design devices that grow out of this: <…>
 
-## Тон і заборони
-- Тон: <…>
-- Не робимо: <…>
+## Tone and don'ts
+- Tone: <…>
+- We don't do: <…>
 
-## Модель доступу і дія
-- Головна дія: <…>
-- Обіцянка: <напр. ранній доступ: N місяців безкоштовно — ПІДТВЕРДИТИ>
-- Куди йдуть заявки чи оплата: <…>
+## Access model and action
+- Main action: <…>
+- Promise: <e.g. early access: N months free (CONFIRM)>
+- Where sign-ups or payments go: <…>
 
-## Карта секцій
-| # | Питання відвідувача | Відповідь одним реченням | Форма | Який факт цього продукту вимагає цієї форми |
+## Section map
+| # | Visitor question | One-sentence answer | Form | Which fact about this product calls for this form |
 |---|---|---|---|---|
-| 1 | Що це і для мене? | <…> | <…> | <…> |
+| 1 | What is it and is it for me? | <…> | <…> | <…> |
 
-Перевірка на шаблонність: <які форми збігаються з уже зробленими лендингами і чому тут вони виправдані, або що замінено>
+Template check: <which forms match landing pages already made and why they are justified here, or what was replaced>
 
-## Ассети
-- Логотип / знак: <шлях>
-- Кольори й шрифти: <є / нема>
-- Іконки та логотипи інтеграцій: <шлях>
+## Assets
+- Logo / mark: <path>
+- Colors and fonts: <yes / no>
+- Icons and integration logos: <path>
 
-## Відкриті питання і прийняті дефолти
-- [ ] <питання> → дефолт: <що поставили>
+## Open questions and defaults
+- [ ] <question> → default: <what was set>

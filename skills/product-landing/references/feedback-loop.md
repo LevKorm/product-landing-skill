@@ -1,38 +1,38 @@
-# Цикл фідбеку і версії
+# Feedback loop and versions
 
-Стильна сторінка виходить з багатьох коротких раундів правок, а не з першої версії. Цей файл описує, як проводити раунди. Смак користувача, який переноситься між продуктами, живе окремо, у `taste-profile.md`.
+A stylish page comes from many short rounds of edits, not from the first version. This file describes how to run those rounds. The user's taste that carries over between products lives separately, in `taste-profile.md`.
 
-## Протокол одного раунду
+## Protocol for one round
 
-1. **Розібрати фідбек.** Користувач часто диктує голосом, з помилками розпізнавання. Перекажи правки коротким списком своїми словами. Якщо щось двозначне, вибери найімовірніше тлумачення, скажи його прямо і запропонуй інше одним рядком.
-2. **Узагальнити, але в межах продукту.** «Логотипи поїхали в одному блоці» → перевір усі логотипи на сторінці. «Забагато акценту тут» → перевір, чи акцент не розмазаний і деінде.
-3. **Внести все за раз,** секція за секцією, без часткових перепублікацій.
-4. **Перевірити:**
-   - скрипт на переповнення карток і горизонтальний скрол;
-   - консоль без помилок;
-   - один-два скриншоти на 1440 і, якщо чіпав верстку, на 375;
-   - для мобільної перевірки — зібраний файл з viewport-метою.
-5. **Опублікувати** той самий артефакт (URL не міняється). Для великих розворотів — нова версія.
-6. **Звітувати:** що змінено по пунктах, що перевірено, чого не вдалося побачити очима. Відкриті рішення (цифри, цитати) — окремо.
-7. **Записати** (див. кінець файлу).
+1. **Parse the feedback.** The user often dictates by voice, with recognition errors. Restate the edits as a short list in your own words. If something is ambiguous, pick the most likely reading, state it plainly and offer the alternative in one line.
+2. **Generalize, but within the product.** "The logos are off in one block" → check all logos on the page. "Too much accent here" → check that the accent isn't spread thin elsewhere too.
+3. **Apply everything at once,** section by section, without partial republishes.
+4. **Verify:**
+   - a script for card overflow and horizontal scroll;
+   - a console with no errors;
+   - one or two screenshots at 1440 and, if you touched the layout, at 375;
+   - for the mobile check, the built file with the viewport meta.
+5. **Publish** the same artifact (the URL doesn't change). For major pivots, make a new version.
+6. **Report:** what changed, point by point; what was verified; what you couldn't see with your own eyes. List open decisions (numbers, quotes) separately.
+7. **Record** (see the end of the file).
 
-## Версії
+## Versions
 
-- Великий розворот концепції → нова версія. Попередню скопіюй у `vN.html`, `index.html` лишається найсвіжішою.
-- Перемикач версій у меню кожної версії, щоб порівнювати.
-- **У прод іде лише фінальна версія:** перемикач вирізає `build.sh`, сторінки `vN.html` не деплояться. Відвідувачам версії не потрібні, вони лише плутають.
+- A major concept pivot → a new version. Copy the previous one to `vN.html`. `index.html` stays the latest.
+- Put a version switcher in the menu of every version, for comparison.
+- **Only the final version goes to production:** `build.sh` strips the switcher, and `vN.html` pages are not deployed. Visitors don't need versions. They only confuse them.
 
-## Смак чи рішення продукту
+## Taste or product decision
 
-Кожна правка — або про людину, або про цей продукт. Розрізняй їх, бо від цього залежить, куди її записати:
-- **Смак людини** повторюється на різних продуктах: «забагато тексту», «бліді іконки», «не малюй людей». Такі правки йдуть у `taste-profile.md` і стають дефолтами для наступних лендингів.
-- **Рішення продукту** правильне лише тут: «акцентний колір означає тебе», «усе по центру», «стіна всіх фіч наприкінці». Воно лишається в брифі цього лендинга і в наступний продукт не переноситься.
-- **Не впевнений?** Запиши як гіпотезу і звір на наступному продукті.
+Every edit is about either the person or this product. Tell them apart, because that decides where to record it:
+- **The person's taste** repeats across products: "too much text", "pale icons", "don't draw people". These edits go into `taste-profile.md` and become defaults for future landing pages.
+- **A product decision** is right only here: "the accent color means you", "everything centered", "a wall of all features at the end". It stays in this landing page's brief and doesn't carry over to the next product.
+- **Not sure?** Record it as a hypothesis and check it on the next product.
 
-## Що записувати після сесії
+## What to record after the session
 
-- **У `taste-profile.md` (або в памʼять про користувача):** правки про смак людини, з позначкою «переноситься» чи «гіпотеза».
-- **У бриф і памʼять проєкту:** рішення цього лендинга, структура і фірмовий момент одним рядком. Так наступний продукт не повторить їх за інерцією. Якщо лендинг вдалий, коротко додай його в `case-studies.md` у форматі «питання → форма → факт».
-- **Перевірені факти продукту,** які пішли на сайт, із джерелом.
-- **Відкриті питання:** цифри, цитата засновника, написання вордмарку, домен.
-- **Технічні деталі проду:** URL, Vercel-проєкт, скрипт збірки, куди йдуть заявки.
+- **In `taste-profile.md` (or in the user memory):** edits about the person's taste, marked "carries over" or "hypothesis".
+- **In the brief and project memory:** this landing page's decisions, its structure and its signature moment in one line. That way the next product won't repeat them out of inertia. If the landing page worked out, add it briefly to `case-studies.md` in the format "question → form → fact".
+- **Verified product facts** that went on the site, with their source.
+- **Open questions:** numbers, founder quote, wordmark spelling, domain.
+- **Production technical details:** URL, Vercel project, build script, where signups go.

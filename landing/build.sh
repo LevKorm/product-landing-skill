@@ -4,8 +4,8 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 SITE_URL="${SITE_URL:-https://landingskill.vercel.app}"
-TITLE="product-landing · Claude Code skill"
-DESC="A Claude Code skill that builds a landing page from your product's facts. Every section names the fact behind it, the rest gets cut, and the page ships to Vercel."
+TITLE="product-landing: landing pages that fit your product"
+DESC="A free Claude Code skill. Ask for a landing page: it studies your product first, builds the page around what it actually does, and puts it live on Vercel."
 OUT=site
 mkdir -p "$OUT"
 find "$OUT" -mindepth 1 -maxdepth 1 ! -name .vercel -exec rm -rf {} +

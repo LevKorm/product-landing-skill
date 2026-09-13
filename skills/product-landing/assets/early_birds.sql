@@ -1,6 +1,6 @@
 -- <Product> landing · waitlist (rename the table and the allowed source values to match the page's forms)
--- anon (публічний ключ): лише INSERT у дозволені колонки; SELECT/UPDATE/DELETE заборонені
--- service_role: повний доступ (список читати з дашборда або сервісним ключем)
+-- anon (public key): INSERT into allowed columns only; SELECT/UPDATE/DELETE are forbidden
+-- service_role: full access (read the list from the dashboard or with the service key)
 
 create extension if not exists "pgcrypto";
 
@@ -20,7 +20,7 @@ create table if not exists public.early_birds (
   constraint early_birds_user_agent_len check (user_agent is null or char_length(user_agent) <= 400)
 );
 
--- одна адреса = один запис; повторна відправка дає 409
+-- one address = one row; a repeat submission returns 409
 create unique index if not exists early_birds_email_key on public.early_birds (lower(email));
 create index if not exists early_birds_created_at_idx on public.early_birds (created_at desc);
 
@@ -34,6 +34,6 @@ create policy early_birds_anon_insert on public.early_birds
     and source in ('hero', 'final', 'landing')
   );
 
--- жодного читання для anon; INSERT лише в ці колонки, тож id і created_at не підмінити
+-- no reads for anon; INSERT only into these columns, so id and created_at can't be spoofed
 revoke all on table public.early_birds from anon, authenticated;
 grant insert (email, source, page, referrer, user_agent) on table public.early_birds to anon;

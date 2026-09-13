@@ -1,43 +1,43 @@
-# Збірка, мобільна версія, деплой і дія на сторінці
+# Build, mobile version, deploy and the page action
 
-## 1. Формат джерела
+## 1. Source format
 
-- **Один HTML-файл без `<!doctype>` і `<head>`:** зверху `<title>`, `<link>` на Google Fonts і `<style>`, далі спрайт іконок і тіло. Такий файл одразу публікується як артефакт на claude.ai і водночас служить джерелом для прод-збірки.
-- **Спрайт іконок і логотипів** вшитий (див. `design-system.md` §5).
-- **JS в кінці,** окремим IIFE на кожну інтерактивну секцію. Кожен цикл анімації зупиняється поза екраном.
-- **Файли:** `<папка лендингу>/index.html` (+ `v1.html`, `v2.html`, `build.sh`, `site/`).
+- **One HTML file without `<!doctype>` and `<head>`:** `<title>`, a `<link>` to Google Fonts and `<style>` at the top, then the icon sprite and the body. Such a file publishes directly as an artifact on claude.ai and also serves as the source for the production build.
+- **The icon and logo sprite** is inlined (see `design-system.md` §5).
+- **JS at the end,** a separate IIFE for each interactive section. Every animation loop stops when off screen.
+- **Files:** `<landing folder>/index.html` (+ `v1.html`, `v2.html`, `build.sh`, `site/`).
 
-## 2. Мобільна адаптація (<760px), секція за секцією
+## 2. Mobile adaptation (<760px), section by section
 
-Перевіряй на **зібраному** `site/index.html`: у сирому файлі нема viewport-мети, і емулятор малює 980px.
+Check on the **built** `site/index.html`: the raw file has no viewport meta, and the emulator renders it at 980px.
 
-Нижче типові візуальні патерни. Бери рядки лише для тих, що є на твоїй сторінці.
+Below are common visual patterns. Take only the rows for the patterns your page has.
 
-| Патерн на десктопі | Що зробити на телефоні |
+| Desktop pattern | What to do on a phone |
 |---|---|
-| Інтерактивна демка чи пристрій у рамці | нижча висота (~420–480px), прибрати дрібні підказки, жест лишити, якщо він працює пальцем |
-| Діаграма на фіксованому полотні з масштабом | скасувати масштаб; елементи `position:relative` у grid чи стеку в логічному порядку; лінії й декор, що лишились без сенсу, сховати |
-| Широка чи закріплена схема, привʼязана до скролу | сховати; зібрати вертикальний список кроків із тих самих карток (клони) |
-| Кілька моніторів чи пристроїв поруч | один головний на всю ширину, решта менші під ним або перемикачем |
-| Ілюстрована сцена | крупніший кадр на головний об'єкт; спливаючі підписи замінити карткою під сценою |
-| Бенто | одна колонка чи дві; анімовані візуали лишити, але менші |
-| Таблиця порівняння чи тарифів | вкладки з однією колонкою за раз (продукт чи рекомендований план вибраний за замовчуванням) або картки тарифів одна під одною |
-| Нескінченна стрічка чи стіна | менше рядів і плиток; перепакувати при зміні брейкпойнта (`matchMedia` + `change`) |
-| Панель дії з формою | менші відступи, форма в стовпчик, перки дрібніше |
+| Interactive demo or a device in a frame | lower height (~420–480px), remove small hints, keep the gesture if it works with a finger |
+| Diagram on a fixed canvas with scaling | cancel the scaling; elements `position:relative` in a grid or stack in logical order; hide lines and decoration that no longer make sense |
+| Wide or pinned scroll-linked diagram | hide it; build a vertical list of steps from the same cards (clones) |
+| Several monitors or devices side by side | one main one at full width, the rest smaller below it or behind a switcher |
+| Illustrated scene | a closer crop on the main object; replace pop-up labels with a card below the scene |
+| Bento | one or two columns; keep the animated visuals, but smaller |
+| Comparison or pricing table | tabs with one column at a time (the product or the recommended plan selected by default) or pricing cards stacked one under another |
+| Infinite marquee or wall | fewer rows and tiles; repack on breakpoint change (`matchMedia` + `change`) |
+| Action panel with a form | smaller padding, form in a column, smaller perks |
 
-Контрольні перевірки:
+Checks:
 - `document.documentElement.scrollWidth === innerWidth`;
-- висоти ключових секцій розумні;
-- жодних обрізаних текстів;
-- кнопки не переносяться на два рядки.
+- key section heights are reasonable;
+- no clipped text;
+- buttons don't wrap to two lines.
 
-## 3. Збірка для проду
+## 3. Production build
 
-Скопіюй `assets/build.sh` у папку лендингу, заповни `SITE_URL`, `TITLE`, `DESC` і знак для favicon. Він:
-- обгортає `index.html` у повний документ: doctype, charset, viewport, description, canonical, OG/Twitter, favicon, `[hidden]{display:none!important}`;
-- вирізає перемикач версій (`<span class="vswitch">`) і не бере `vN.html`;
-- створює `favicon.svg`, `apple-touch-icon.png` і `og.png` 1200×630 через headless Chrome;
-- з `--deploy` запускає `vercel deploy --prod --yes` у `site/`.
+Copy `assets/build.sh` into the landing page folder, fill in `SITE_URL`, `TITLE`, `DESC` and the favicon glyph. It:
+- wraps `index.html` in a full document: doctype, charset, viewport, description, canonical, OG/Twitter, favicon, `[hidden]{display:none!important}`;
+- strips the version switcher (`<span class="vswitch">`) and skips `vN.html`;
+- creates `favicon.svg`, `apple-touch-icon.png` and a 1200×630 `og.png` via headless Chrome;
+- with `--deploy`, runs `vercel deploy --prod --yes` in `site/`.
 
 ## 4. Vercel
 
@@ -46,63 +46,63 @@ cd site && vercel project add <project-name> && vercel link --yes --project <pro
 cd .. && ./build.sh --deploy
 ```
 
-- Імʼя проєкту дає домен `<name>.vercel.app`. Звір, що `SITE_URL` у build.sh збігається з алиасом у виводі деплою.
-- Користувач прямо просить опублікувати → це підтвердження проду. Для першого деплою коротко назви проєкт і URL.
-- **Після деплою:**
-  - `curl` на `/`, `/og.png`, `/favicon.svg` дає 200;
-  - `/v1.html` дає 404;
-  - у HTML нема `vswitch`;
-  - `vercel inspect` показує Ready;
-  - живу сторінку відкрити на десктопі й на 375.
-- Живе посилання занести туди, де команда веде облік проєктів (Notion, README, трекер), якщо таке місце є.
+- The project name gives the domain `<name>.vercel.app`. Check that `SITE_URL` in build.sh matches the alias in the deploy output.
+- The user explicitly asks to publish → that is the confirmation for production. For the first deploy, briefly name the project and the URL.
+- **After deploy:**
+  - `curl` on `/`, `/og.png`, `/favicon.svg` returns 200;
+  - `/v1.html` returns 404;
+  - the HTML has no `vswitch`;
+  - `vercel inspect` shows Ready;
+  - open the live page on desktop and at 375.
+- Record the live link wherever the team tracks projects (Notion, README, tracker), if such a place exists.
 
-### Зміна домену, коли старе посилання вже розіслане
-1. Перевірити, що нове імʼя вільне: `curl -sI https://<new>.vercel.app` дає 404 `DEPLOYMENT_NOT_FOUND`.
+### Changing the domain when the old link is already shared
+1. Check that the new name is free: `curl -sI https://<new>.vercel.app` returns 404 `DEPLOYMENT_NOT_FOUND`.
 2. `cd site && vercel domains add <new>.vercel.app`.
-3. У `build.sh` змінити `SITE_URL` і генерувати `site/vercel.json` з редиректом за host. Правило для кореня `/` потрібне окремо, `/:path*` його не ловить:
+3. In `build.sh`, change `SITE_URL` and generate `site/vercel.json` with a host-based redirect. The root `/` needs its own rule, because `/:path*` doesn't catch it:
    ```json
    { "redirects": [
      { "source": "/", "has": [{ "type": "host", "value": "<old>.vercel.app" }], "destination": "https://<new>.vercel.app/", "permanent": true },
      { "source": "/:path*", "has": [{ "type": "host", "value": "<old>.vercel.app" }], "destination": "https://<new>.vercel.app/:path*", "permanent": true }
    ] }
    ```
-4. Задеплоїти й перевірити: старий `/`, `/?utm=x` і `/og.png` віддають 308 на новий домен із тим самим шляхом і query; canonical та `og:image` вказують на новий домен.
+4. Deploy and verify: the old `/`, `/?utm=x` and `/og.png` return 308 to the new domain with the same path and query; canonical and `og:image` point to the new domain.
 
-## 5. Дія на сторінці: залежить від моделі доступу
+## 5. The page action: depends on the access model
 
-| Модель | Що підключити |
+| Model | What to connect |
 |---|---|
-| Waitlist, ранній доступ | форма email → Supabase (§6) |
-| Безкоштовне завантаження | пряме посилання на `.dmg` / App Store / реліз, поруч вимоги (ОС, архітектура) |
-| Покупка чи підписка | checkout Lemon Squeezy, Paddle чи Stripe; ціни на сторінці збігаються з checkout |
-| Open source | команда встановлення з кнопкою копіювання, посилання на репо й документацію |
+| Waitlist, early access | email form → Supabase (§6) |
+| Free download | direct link to `.dmg` / App Store / release, with the requirements next to it (OS, architecture) |
+| Purchase or subscription | Lemon Squeezy, Paddle or Stripe checkout; prices on the page match the checkout |
+| Open source | install command with a copy button, links to the repo and docs |
 
-## 6. Waitlist у Supabase
+## 6. Waitlist in Supabase
 
-1. **Проєкт.** Використай наявний проєкт продукту. Створення нового може коштувати грошей, його треба узгодити з користувачем.
-2. **Міграція.** `assets/early_birds.sql` покласти в `supabase/migrations/NNNN_<table>.sql` (назву таблиці й дозволені значення `source` підлаштуй під форми сторінки) і застосувати через MCP `apply_migration`. Суть:
-   - публічний ключ може лише INSERT у дозволені колонки (column grants);
-   - SELECT, UPDATE і DELETE заборонені;
-   - унікальний `lower(email)`, check на формат і довжини;
-   - `source` лише з переліку форм на сторінці.
-3. **Ключ.** Взяти публічний (`get_publishable_keys`, краще `sb_publishable_…`). Він безпечний у клієнті лише завдяки RLS і grants.
-4. **Клієнт.** `assets/waitlist-form.js`: POST на `/rest/v1/<table>` з `Prefer: return=minimal`, поле-пастка, стани (перевірка, «надсилаю», успіх, «вже в списку», помилка мережі), синхронізація всіх форм, `localStorage`. Тексти кнопок і станів узгодь із назвою дії на сторінці.
-5. **Перевірити curl-запитами** (тестові рядки потім видалити через `execute_sql`):
-   - валідний запит дає 201;
-   - дубль дає 409;
-   - кривий email дає 400;
-   - чужий `source` чи `created_at` дає 401;
-   - GET і DELETE дають відмову.
-6. **Advisors.** `get_advisors security` має бути порожнім.
-7. **Реальна відправка** з прод-домену (перевіряє CORS), потім видалити тестовий рядок.
-8. **Дати користувачу посилання на таблицю:** `https://supabase.com/dashboard/project/<ref>/editor/<table_oid>?schema=public` (oid: `select 'public.<table>'::regclass::oid`).
-9. **Приватність.** Під формою рядок про те, для чого email. Якщо планується розсилка новин, додати згоду.
+1. **Project.** Use the product's existing project. Creating a new one may cost money, so agree on it with the user.
+2. **Migration.** Put `assets/early_birds.sql` into `supabase/migrations/NNNN_<table>.sql` (adjust the table name and the allowed `source` values to the page's forms) and apply it via the MCP `apply_migration`. The essentials:
+   - the public key can only INSERT into allowed columns (column grants);
+   - SELECT, UPDATE and DELETE are forbidden;
+   - unique `lower(email)`, checks on format and lengths;
+   - `source` only from the list of forms on the page.
+3. **Key.** Take the public one (`get_publishable_keys`, preferably `sb_publishable_…`). It is safe in the client only thanks to RLS and grants.
+4. **Client.** `assets/waitlist-form.js`: POST to `/rest/v1/<table>` with `Prefer: return=minimal`, a honeypot field, states (validation, "sending", success, "already on the list", network error), sync across all forms, `localStorage`. Match the button and state texts to the name of the action on the page.
+5. **Verify with curl requests** (delete the test rows afterwards via `execute_sql`):
+   - a valid request returns 201;
+   - a duplicate returns 409;
+   - a malformed email returns 400;
+   - an unlisted `source` or a supplied `created_at` returns 401;
+   - GET and DELETE are denied.
+6. **Advisors.** `get_advisors security` must come back empty.
+7. **A real submission** from the production domain (this checks CORS), then delete the test row.
+8. **Give the user a link to the table:** `https://supabase.com/dashboard/project/<ref>/editor/<table_oid>?schema=public` (oid: `select 'public.<table>'::regclass::oid`).
+9. **Privacy.** Under the form, add a line about what the email is for. If a newsletter is planned, add consent.
 
-## 7. Після запуску: доступ для waitlist
+## 7. After launch: access for the waitlist
 
-Пояснити користувачу, будувати за запитом:
-- **розсилка:** CSV з таблиці → сервіс розсилок (Resend, Loops);
-- **логін в апці:** Supabase Auth magic link (заодно підтверджує власника адреси);
-- **доступ:** таблиця з `access_until`; при першому вході функція шукає email у waitlist і ставить дату;
-- **оплата** після безкоштовного періоду: Stripe, Paddle чи Lemon Squeezy;
-- **рішення за користувачем:** звідки рахувати безкоштовний період (від запуску чи від першого входу).
+Explain this to the user, build on request:
+- **mailing:** CSV from the table → a mailing service (Resend, Loops);
+- **login in the app:** Supabase Auth magic link (it also confirms the owner of the address);
+- **access:** a table with `access_until`; on first login a function looks up the email in the waitlist and sets the date;
+- **payment** after the free period: Stripe, Paddle or Lemon Squeezy;
+- **the user decides:** where the free period starts (from launch or from first login).

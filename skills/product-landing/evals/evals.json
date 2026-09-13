@@ -3,40 +3,40 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Зроби лендинг для нашого продукту Wordhive, це апка для вивчення слів картками. Подивись що є в репо і в памʼяті, питання задай якщо щось критичне.",
-      "expected_output": "Фактична база з коду/доків і бриф з джерелами; до 4 критичних питань; головна механіка одним реченням; карта секцій, де кожна форма пояснена фактом Wordhive; фірмовий момент виведений з механіки продукту; один HTML-файл, перевірка на 1440 і 375.",
+      "prompt": "Make a landing page for our product Wordhive, it's a flashcard app for learning words. Look at what's in the repo and in memory, ask me questions if something's critical.",
+      "expected_output": "A fact base from code/docs and a brief with sources; up to 4 critical questions; the core mechanic in one sentence; a section map where every form is justified by a Wordhive fact; a signature moment derived from the product's mechanic; one HTML file, checked at 1440 and 375.",
       "files": [],
       "expectations": [
-        "Бриф містить речення головної механіки у форматі «Людина робить ___, і відбувається ___»",
-        "Карта секцій має стовпчик з фактом продукту для кожної форми",
-        "Нема закріпленої горизонтальної панорами процесу без факту про довгий розгалужений процес у Wordhive",
-        "Нема таблиці порівняння з повторюваними чипами «You» без факту, що цінність — зняття роботи з людини",
-        "Фірмовий момент виведений з головної механіки Wordhive і розвалюється, якщо підставити продукт іншої категорії"
+        "The brief contains the core mechanic sentence in the format \"A person does ___, and ___ happens\"",
+        "The section map has a column with a product fact for every form",
+        "There is no pinned horizontal process panorama unless there is a fact about a long branching process in Wordhive",
+        "There is no comparison table with repeated \"You\" chips unless there is a fact that the value is taking work off the person",
+        "The signature moment is derived from Wordhive's core mechanic and falls apart if you swap in a product from another category"
       ]
     },
     {
       "id": 2,
-      "prompt": "у нас вже є лендос в proposals/landing, але позиціонування розмите — фіч купа, історії нема. переупакуй: зроби дослідження, переформуй бачення і дай нову структуру секцій перед тим як малювати",
-      "expected_output": "Discovery без малювання: групування фіч за віссю, вибраною за фактами продукту; одна центральна ідея; 2–3 варіанти headline; оновлений бриф і карта секцій із питанням і фактом на кожну секцію; відкриті питання.",
+      "prompt": "we already have a landing in proposals/landing but the positioning is fuzzy, tons of features and no story. repackage it: do some research, rework the vision and give me a new section structure before you start drawing anything",
+      "expected_output": "Discovery with no drawing: features grouped along an axis chosen from the product's facts; one central idea; 2–3 headline options; an updated brief and section map with a question and a fact for every section; open questions.",
       "files": []
     },
     {
       "id": 3,
-      "prompt": "Лендинг готовий, я задоволений. Задеплой на версел і підключи форму early birds до супабейсу, щоб я бачив мейли.",
-      "expected_output": "build.sh без перемикача версій, OG/favicon, vercel project add/link/deploy --prod, перевірка curl; міграція insert-only з column grants і unique lower(email); клієнтська форма зі станами; curl-проби прав і видалення тестових рядків; посилання на таблицю в дашборді.",
+      "prompt": "Landing is done, I'm happy with it. Deploy it to vercel and hook the early birds form up to supabase so I can see the emails.",
+      "expected_output": "build.sh without the version switcher, OG/favicon, vercel project add/link/deploy --prod, curl check; an insert-only migration with column grants and unique lower(email); a client form with states; curl probes of permissions and deletion of test rows; a link to the table in the dashboard.",
       "files": []
     },
     {
       "id": 4,
-      "prompt": "Треба лендос для InvoiceLens — це API, яке з PDF-рахунків дістає структуровані дані (постачальник, суми, ПДВ, рядки) для розробників бухгалтерських сервісів. Є безкоштовний тариф на 100 документів, далі платно. Репо нема, питань не став, прийми дефолти. Дай лише бриф, карту секцій і дизайн-план, без HTML.",
-      "expected_output": "Бриф і карта секцій з урахуванням розробницької аудиторії та знайомої категорії; фірмовий момент і прийоми з власного світу продукту; ціни з безкоштовним тарифом; жодних форм з кейсів без відповідного факту.",
+      "prompt": "Need a landing for InvoiceLens, it's an API that pulls structured data out of PDF invoices (vendor, totals, VAT, line items) for devs building accounting services. Free tier for 100 documents, paid after that. No repo, don't ask me questions, just go with defaults. Give me only the brief, section map and design plan, no HTML.",
+      "expected_output": "A brief and section map that account for a developer audience and a familiar category; a signature moment and devices from the product's own world; pricing with the free tier; no forms from the case studies without a matching fact.",
       "files": [],
       "expectations": [
-        "Фірмовий момент показує саму механіку InvoiceLens, а не полотно, монітори чи сцену настрою з кейсів",
-        "Є секція чи блок цін із безкоштовним тарифом на 100 документів; нема waitlist-форми",
-        "Нема акроніму назви, стіни фіч чи закріпленої горизонтальної схеми без пояснення фактом",
-        "Моно-шрифт передбачений для коду, бо аудиторія — розробники",
-        "Кожна секція в карті має факт InvoiceLens у стовпчику обґрунтування"
+        "The signature moment shows the InvoiceLens mechanic itself, not a canvas, monitors or a mood scene from the case studies",
+        "There is a pricing section or block with the free tier of 100 documents; there is no waitlist form",
+        "There is no name acronym, feature wall or pinned horizontal diagram unless a fact explains it",
+        "A monospace font is planned for code, because the audience is developers",
+        "Every section in the map has an InvoiceLens fact in the justification column"
       ]
     }
   ]

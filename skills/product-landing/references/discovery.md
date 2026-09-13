@@ -1,85 +1,85 @@
-# Discovery: фактична база, бриф і бачення
+# Discovery: fact base, brief and vision
 
-Мета фази — мати правдиву, перевірену картину продукту до першого пікселя. Сильна сторінка тримається на твердженнях, у яких є джерело. Неправду (перебільшену фічу, неточне число) треба ловити до публікації, а не після.
+The goal of this phase is a true, verified picture of the product before the first pixel. A strong page rests on claims that have a source. Catch untruths (an inflated feature, an inaccurate number) before publishing, not after.
 
-## 1. Де шукати самостійно (спершу це, питання потім)
+## 1. Where to look on your own (this first, questions later)
 
-У такому порядку, зупиняйся, коли картина складається:
+Go in this order. Stop when the picture comes together:
 
-1. **Памʼять проєкту:** `MEMORY.md` і файли про позиціонування, назву, голос засновника, чесність у публічних текстах. Там часто вже є теглайн, пілари, заборонені формулювання.
-2. **Доки:** `README`, `docs/`, PRD, брифи, релізні нотатки, `CHANGELOG`. Дата важлива: документ місячної давності міг застаріти.
-3. **Код як джерело правди:**
-   - перші коментарі модулів дають карту фіч за хвилину;
-   - адаптери та інтеграції показують, що реально підтримано;
-   - константи показують реальні числа: ліміти, строки, кількості;
-   - ассети дають логотипи, іконки й кольори, які продукт уже використовує;
-   - міграції БД показують, що зберігається.
-4. **Git log:** що зроблено нещодавно і що в роботі.
-5. **Попередні лендинги й прототипи цього продукту:** що вже подобалось користувачу.
-6. **Конкуренти:** вебпошук по категорії, лише публічні доки. Не приписуй користувачу тестування, якщо він лише «дивився».
+1. **Project memory:** `MEMORY.md` and files about positioning, the name, the founder's voice, honesty in public copy. They often already contain the tagline, pillars and banned phrasings.
+2. **Docs:** `README`, `docs/`, PRD, briefs, release notes, `CHANGELOG`. The date matters: a month-old document may be outdated.
+3. **Code as the source of truth:**
+   - the opening comments of modules give you a feature map in a minute;
+   - adapters and integrations show what is actually supported;
+   - constants show the real numbers: limits, timeouts, counts;
+   - assets give the logos, icons and colors the product already uses;
+   - DB migrations show what gets stored.
+4. **Git log:** what was done recently and what is in progress.
+5. **Previous landing pages and prototypes of this product:** what the user already liked.
+6. **Competitors:** web search by category, public docs only. Don't claim the user tested something if they only "looked at it".
 
-Великий обсяг читання делегуй субагенту (Explore) з конкретним списком питань і вимогою «статус (true / changed / gone) + файл:рядок». Так ти отримуєш висновки, а не дамп файлів.
+Delegate large reading jobs to a subagent (Explore) with a concrete list of questions and the requirement "status (true / changed / gone) + file:line". This way you get conclusions, not a file dump.
 
-## 2. Що перевірити в коді перед тим, як написати на сайті
+## 2. What to verify in code before writing it on the site
 
-Для кожного твердження про фічу: чи воно існує, чи працює за замовчуванням, чи має умови. Типові пастки:
-- **фіча працює лише в одному режимі** → написати умову або не робити її головною;
-- **число з брифу не збігається з кодом** («до 8 на задачу» проти «до 8 на прогін») → брати з коду;
-- **«будь-який провайдер»** проти списку, який справді підтримано → назвати список;
-- **поведінка залежить від ризику чи тарифу** → так і сказати («review grows with risk», «Pro only»).
+For every feature claim: does it exist, does it work by default, does it have conditions. Common traps:
+- **the feature works only in one mode** → state the condition or don't make it the headline;
+- **a number in the brief doesn't match the code** ("up to 8 per task" vs "up to 8 per run") → take it from the code;
+- **"any provider"** vs the list that is actually supported → name the list;
+- **behavior depends on risk or plan** → say exactly that ("review grows with risk", "Pro only").
 
-Якщо не можна перевірити, формулюй обережно або прибирай.
+If you can't verify it, phrase it carefully or remove it.
 
-## 3. Питання користувачу (тільки ті, яких не закрили джерела)
+## 3. Questions for the user (only the ones the sources didn't answer)
 
-Питай до 4 за раз, з варіантами й рекомендованим дефолтом.
+Ask up to 4 at a time, with options and a recommended default.
 
-**Продукт і стадія**
-- Що це одним реченням і для кого? Яку роботу людина «наймає» продукт робити?
-- Платформа (web / Mac / мобільний / API), стадія (ідея / бета / запущено)?
-- Назва остаточна? Написання вордмарку? Домен?
-- Модель доступу: завантаження, покупка, підписка, waitlist? Що обіцяємо ранньому доступу?
+**Product and stage**
+- What is it in one sentence, and for whom? What job does a person "hire" the product to do?
+- Platform (web / Mac / mobile / API), stage (idea / beta / launched)?
+- Is the name final? Wordmark spelling? Domain?
+- Access model: download, purchase, subscription, waitlist? What do we promise early access users?
 
-**Голос і бачення**
-- Теглайн засновника, його словами? Чому він це робить?
-- Тон: серйозний, людяний, з гумором? Мова сайту?
-- З якого світу продукт: предмети, одиниці, стани, жести?
+**Voice and vision**
+- The founder's tagline, in their own words? Why are they doing this?
+- Tone: serious, human, with humor? Site language?
+- What world does the product come from: objects, units, states, gestures?
 
-**Аудиторія і конкуренти**
-- Хто відвідувач і що він використовує зараз замість продукту?
-- Чи знає він категорію, чи її треба пояснювати?
-- Головне заперечення («навіщо, якщо є X», «а якщо зламається»)?
-- Кого вважаємо конкурентами і що з них користувач реально пробував?
+**Audience and competitors**
+- Who is the visitor, and what do they use now instead of the product?
+- Do they know the category, or does it need explaining?
+- The main objection ("why, if X exists", "what if it breaks")?
+- Who do we count as competitors, and which of them has the user actually tried?
 
-**Докази й ассети**
-- Реальні відгуки, цифри, скріншоти? Якщо нема, на сторінці їх теж нема.
-- Логотип, кольори, шрифти вже є? Які сайти подобаються і які ні, і чим саме?
+**Proof and assets**
+- Real testimonials, numbers, screenshots? If there are none, there are none on the page either.
+- Is there a logo, colors, fonts already? Which sites do they like and dislike, and why exactly?
 
-**Конверсія і прод**
-- Одна головна дія: завантажити, лишити email, купити?
-- Куди йдуть заявки (Supabase, сервіс розсилок)? Потрібні згода й приватність?
-- Хостинг, домен, дедлайн?
+**Conversion and production**
+- One main action: download, leave an email, buy?
+- Where do signups go (Supabase, a mailing service)? Are consent and privacy needed?
+- Hosting, domain, deadline?
 
-## 4. Бриф (записати у `docs/landing/brief.md`)
+## 4. Brief (write it to `docs/landing/brief.md`)
 
-Використай `assets/brief-template.md`. Обовʼязкові частини:
-- **One-liner** і **headline-кандидати**: 2–3, один зі слів засновника, якщо вони є.
-- **Аудиторія:** рівень обізнаності, новизна категорії, тип рішення, головне заперечення.
-- **Головна механіка одним реченням:** «Людина робить ___, і відбувається ___». Із неї виросте фірмовий момент.
-- **Опори (3–5):** теза → доказ → джерело (шлях до файлу або документа).
-- **Відмінності:** проти категорій, з датою, без «ніде нема». Можна чесно написати «окрема секція не потрібна».
-- **Світ продукту:** предмети, одиниці, стани, жести, матеріал. Із нього виростуть прийоми дизайну.
-- **Тон і заборони.**
-- **Модель доступу і дія.**
-- **Карта секцій** у форматі з `content-architecture.md` §5, зі стовпчиком «який факт вимагає цієї форми».
-- **Відкриті питання і прийняті дефолти.**
+Use `assets/brief-template.md`. Required parts:
+- **One-liner** and **headline candidates**: 2–3, one of them in the founder's words if there are any.
+- **Audience:** awareness level, category novelty, decision type, main objection.
+- **Core mechanic in one sentence:** "A person does ___, and ___ happens". The signature moment grows from it.
+- **Pillars (3–5):** claim → proof → source (path to a file or document).
+- **Differences (honest):** against categories, dated, no "nobody else has this". It's fine to honestly write "no separate section needed".
+- **The product's world:** objects, units, states, gestures, material. The design devices grow from it.
+- **Tone and don'ts.**
+- **Access model and action.**
+- **Section map** in the format from `content-architecture.md` §5, with the column "Which fact about this product calls for this form".
+- **Open questions and defaults.**
 
-Бриф — живий документ: оновлюй його після раундів фідбеку, коли змінюється позиціонування чи назва.
+The brief is a living document. Update it after feedback rounds and when the positioning or the name changes.
 
-## 5. Реорганізація позиціонування (якщо картина розмита)
+## 5. Reorganizing the positioning (if the picture is blurry)
 
-Ознаки: фіч багато, а історії нема; назва не повʼязана з суттю; опори суперечать одна одній. Що робити:
-1. **Згрупувати фічі** за віссю, яка важить для цього відвідувача. Можливі осі: яку роботу знімає, скільки часу економить, що стає можливим, чого більше не треба боятись, наскільки простіше. Обери одну за фактами продукту, а не за звичкою.
-2. **Знайти одну центральну ідею,** в яку лягають групи. Це може бути метафора зі світу продукту, обіцянка чи знайомий образ («Figma для…»).
-3. **Перевірити,** що кожна секція відповідає одному питанню відвідувача, і прибрати дублі.
-4. **Показати користувачу** 2–3 варіанти headline і структури коротко, дати вибрати.
+Signs: many features but no story; the name has no link to the essence; the pillars contradict each other. What to do:
+1. **Group the features** along the axis that matters to this visitor. Possible axes: what work it removes, how much time it saves, what becomes possible, what you no longer have to fear, how much simpler things get. Pick one based on the product's facts, not out of habit.
+2. **Find one central idea** that the groups fit into. It can be a metaphor from the product's world, a promise or a familiar image ("Figma for…").
+3. **Check** that each section answers one visitor question, and remove duplicates.
+4. **Show the user** 2–3 headline and structure options briefly, and let them choose.

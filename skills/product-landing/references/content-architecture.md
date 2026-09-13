@@ -1,136 +1,136 @@
-# Структура сторінки: від питань відвідувача до секцій
+# Page structure: from visitor questions to sections
 
-Тут нема шаблонної карти секцій, і це свідомо. Структура збирається заново для кожного продукту з трьох речей:
-1. хто приходить і що вже знає;
-2. які питання в нього виникають;
-3. яка форма відповіді підходить саме цьому продукту.
+There is no template section map here, and that is deliberate. The structure is assembled again for each product from three things:
+1. who arrives and what they already know;
+2. what questions they have;
+3. which form of answer suits this particular product.
 
-## 1. Хто приходить і що вже знає
+## 1. Who arrives and what they already know
 
-### Рівень обізнаності визначає, з чого почати
+### Awareness level decides where to start
 
-| Відвідувач… | Сторінка починається з… | Що зазвичай зайве |
+| The visitor… | The page starts with… | What is usually unnecessary |
 |---|---|---|
-| не усвідомлює проблему | впізнаваної ситуації або болю; продукт іде другим | довгий список фіч на початку |
-| знає проблему, але не знає рішень | того, що проблема розвʼязується, і як саме | порівняння з конкурентами, яких він не знає |
-| знає категорію, але не знає вас | відмінності, видимої в першому екрані | пояснення, що таке категорія |
-| вже знає продукт | ціни, доступу, новин | повторного переконування |
+| is not aware of the problem | a recognizable situation or pain; the product comes second | a long feature list at the start |
+| knows the problem but not the solutions | the fact that the problem can be solved, and how | comparisons with competitors they don't know |
+| knows the category but not you | a difference visible in the first screen | an explanation of what the category is |
+| already knows the product | pricing, access, news | persuading them again |
 
-### Новизна категорії визначає, скільки пояснювати механіку
-- **Нова категорія** (у людини нема готового слова для продукту). Механіку треба показати по кроках, інакше незрозуміло, за що платити.
-- **Знайома категорія** (менеджер вікон, трекер звичок, картки для слів). Механіку показати за секунду. Решта сторінки — про те, чим цей продукт кращий і як він відчувається в роботі.
+### Category novelty decides how much to explain the mechanic
+- **New category** (the person has no ready word for the product). Show the mechanic step by step, otherwise it is unclear what they are paying for.
+- **Familiar category** (a window manager, a habit tracker, vocabulary flashcards). Show the mechanic in a second. The rest of the page covers why this product is better and how it feels in use.
 
-### Тип рішення визначає довжину і докази
-- **Безкоштовне завантаження, дешева покупка:** коротка сторінка, дія рано і кілька разів.
-- **Дорога покупка, B2B:** довіра, докази, безпека, ціни, контакт.
-- **Waitlist:** чому записатись зараз і що людина отримає.
-- **Open source, розробницький інструмент:** команда встановлення, код, документація, GitHub.
+### Decision type decides length and evidence
+- **Free download, cheap purchase:** a short page, the action early and several times.
+- **Expensive purchase, B2B:** trust, evidence, security, pricing, contact.
+- **Waitlist:** why sign up now and what the person gets.
+- **Open source, developer tool:** install command, code, documentation, GitHub.
 
-## 2. Питання відвідувача і форми відповіді
+## 2. Visitor questions and answer forms
 
-Нижче пул питань. **Не всі потрібні.** Бери лише ті, які реально має відвідувач цього продукту, у порядку, в якому вони виникають саме в нього. До кожного питання дано меню форм з умовами. Вибирай за умовами, а не за тим, що вже спрацювало в іншому лендингу.
+Below is a pool of questions. **Not all of them are needed.** Take only the ones this product's visitor really has, in the order they arise for that visitor. Each question comes with a menu of forms and conditions. Choose by the conditions, not by what already worked on another landing page.
 
-### «Що це і чи це для мене?» (завжди, перший екран)
-Склад: заголовок до ~6 слів, підзаголовок до ~20 слів, дія, фірмовий момент. Решта необовʼязкова.
-- **Заголовок** краще брати зі слів засновника, якщо вони є. Інакше дай 2–3 варіанти на вибір.
-- **Візуал:** найчастіше це і є фірмовий момент (див. §3).
+### "What is this and is it for me?" (always, first screen)
+Contents: a headline of up to ~6 words, a subheadline of up to ~20 words, the action, the signature moment. Everything else is optional.
+- **The headline** is best taken from the founder's own words, if there are any. Otherwise give 2–3 options to choose from.
+- **Visual:** most often this is the signature moment itself (see §3).
 
-### «Як це виглядає і як працює?»
+### "What does it look like and how does it work?"
 
-| Форма | Підходить, коли | Не варто, коли |
+| Form | Fits when | Avoid when |
 |---|---|---|
-| Жива інтерактивна міні-версія продукту | цінність відчувається руками за 5 секунд | продукт невізуальний або «демка» вийде фейком із div-прямокутників |
-| Справжній скріншот чи коротке відео | UI сам по собі переконливий і вже готовий | UI сирий |
-| Одна сцена «до → дія → після» | цінність у миттєвій зміні стану | процес довгий і має гілки |
-| 2–4 кроки з картинками | механіка проста й лінійна | кроки банальні («завантаж, відкрий, користуйся») |
-| Схема процесу з гілками, яка оживає під час скролу (може бути закріплена чи горизонтальна) | продукт сам виконує довгий багатокроковий процес із розгалуженнями, і його автоматизація і є цінністю | процес короткий або відвідувачу байдуже, що всередині. Врахуй ціну: на мобільному вона однаково стане списком, потрібна кнопка «пропустити» |
-| Схема ролей чи сутностей | ідея продукту — у взаєминах кількох сутностей | одна людина робить одну дію |
-| Команда чи код із результатом | аудиторія — розробники, продукт — API, CLI чи SDK | нетехнічна аудиторія |
-| Сценарії «коли ти…» | аудиторія думає задачами, а не функціями | задача одна й очевидна |
+| A live interactive mini version of the product | the value can be felt hands-on in 5 seconds | the product is not visual, or the "demo" would end up as a fake made of div rectangles |
+| A real screenshot or a short video | the UI is convincing on its own and already finished | the UI is rough |
+| One "before → action → after" scene | the value is in an instant change of state | the process is long and has branches |
+| 2–4 steps with pictures | the mechanic is simple and linear | the steps are trivial ("download, open, use") |
+| A branching process diagram that comes alive on scroll (it can be pinned or horizontal) | the product itself runs a long multi-step process with branches, and automating that process is the value | the process is short or the visitor doesn't care what is inside. Mind the cost: on mobile it becomes a list anyway, and it needs a "skip" button |
+| A diagram of roles or entities | the product's idea lies in the relationships between several entities | one person does one action |
+| A command or code with its output | the audience is developers, the product is an API, CLI or SDK | a non-technical audience |
+| "When you…" scenarios | the audience thinks in tasks, not functions | there is one obvious task |
 
-### «Чим це відрізняється від того, що я вже роблю?»
+### "How is this different from what I already do?"
 
-| Форма | Підходить, коли | Не варто, коли |
+| Form | Fits when | Avoid when |
 |---|---|---|
-| Жодної окремої секції: різницю показує демка або рядок у підзаголовку | різниця очевидна з першого екрана | — |
-| «До / після» на одному сценарії | різницю видно на одному прикладі | — |
-| Таблиця «ми проти категорій» | знайома категорія з чіткими осями (ціна, платформи, приватність) | нова категорія: рядки порівняння будуть надумані |
-| Таблиця «хто робить роботу» | цінність саме в тому, що продукт забирає ручну роботу | цінність у швидкості, якості, ціні чи задоволенні від процесу |
-| Цифри «було / стало» | є справжні виміри | цифр нема: вигадувати не можна |
+| No separate section: the demo or a line in the subheadline shows the difference | the difference is obvious from the first screen | — |
+| "Before / after" on one scenario | the difference is visible in one example | — |
+| A "us vs. categories" table | a familiar category with clear axes (price, platforms, privacy) | a new category: the comparison rows will be contrived |
+| A "who does the work" table | the value is precisely that the product takes away manual work | the value is in speed, quality, price or enjoying the process |
+| "Before / after" numbers | there are real measurements | there are no numbers: inventing them is not allowed |
 
-Порівняння з конкурентами за назвою — лише за публічними доками, з датою і без «ніде нема».
+Compare with competitors by name only based on public docs, with a date, and without "nobody else has this".
 
-### «Що саме воно вміє?»
+### "What exactly can it do?"
 
-| Форма | Підходить, коли |
+| Form | Fits when |
 |---|---|
-| 1–3 великі секції, кожна про одну фічу | є кілька фіч, кожна з яких тягне окрему історію |
-| Бенто з різними клітинками й анімаціями | 4–8 фіч приблизно рівної ваги, кожну можна показати візуально |
-| Щільний список деталей з іконками | багато дрібних практичних речей, які знімають заперечення |
-| Каталог чи стіна всіх фіч | сама кількість фіч є аргументом |
-| Таблиця тарифів із галочками | фічі розподілені між планами |
+| 1–3 large sections, each about one feature | there are a few features, and each carries its own story |
+| A bento with varied cells and animations | 4–8 features of roughly equal weight, each can be shown visually |
+| A dense list of details with icons | many small practical things that remove objections |
+| A catalog or wall of all features | the sheer number of features is the argument |
+| A pricing table with checkmarks | features are split across plans |
 
-### «Чи можна цьому довіряти?»
-- **Можна:** справжні відгуки, логотипи клієнтів, цифри використання, відкритий код, пояснення про дані й приватність, хто робить і чому.
-- **Не можна:** вигадувати докази. Якщо їх нема, секції довіри теж нема.
-- **Для раннього продукту** довіру дає прозорість: «early access», «робить одна людина», «дані лишаються на твоєму пристрої». Це теж працює.
+### "Can I trust this?"
+- **Allowed:** real testimonials, client logos, usage numbers, open source code, an explanation of data and privacy, who makes it and why.
+- **Not allowed:** inventing evidence. If there is none, there is no trust section either.
+- **For an early product,** trust comes from transparency: "early access", "made by one person", "your data stays on your device". This works too.
 
-### «Чи підійде моєму сетапу?»
-Платформи, вимоги, інтеграції (логотипами), мова, офлайн-режим. Часто досить одного рядка біля кнопки, окрема секція не потрібна.
+### "Will it fit my setup?"
+Platforms, requirements, integrations (as logos), language, offline mode. Often one line next to the button is enough, and no separate section is needed.
 
-### «Як це відчувається?»
-Сцена настрою потрібна лише тоді, коли настрій — частина цінності або прямо закладений у назву й бренд. Для утилітарного продукту вона зайва: відчуття і так передають якість демки й тон тексту.
+### "How does it feel?"
+A mood scene is needed only when the mood is part of the value or is built directly into the name and brand. For a utilitarian product it is unnecessary: the quality of the demo and the tone of the text already carry the feeling.
 
-### «Скільки коштує і як отримати?»
-- **Waitlist:** панель із 2–3 перками і формою.
-- **Ціни:** тарифи.
-- **Завантаження:** кнопка з вимогами.
-- **Розробникам:** команда встановлення.
+### "How much does it cost and how do I get it?"
+- **Waitlist:** a panel with 2–3 perks and a form.
+- **Pricing:** plans.
+- **Download:** a button with requirements.
+- **For developers:** the install command.
 
-Форм буває одна чи дві (угорі й унизу). Для дуже довгої сторінки дію повторюють ще й посередині.
+There are one or two forms (at the top and at the bottom). On a very long page, the action is repeated in the middle as well.
 
-## 3. Фірмовий момент
+## 3. Signature moment
 
-**Один на сторінку.** Він виростає з головної механіки продукту і відповідає на запитання, яку одну річ відвідувач має запамʼятати.
+**One per page.** It grows out of the product's core mechanic and answers the question of which one thing the visitor should remember.
 
-Як знайти:
-1. Допиши речення «Людина робить ___, і відбувається ___».
-2. Знайди візуал, який показує це речення з найменшою кількістю тексту. Найкраще, коли його можна спробувати руками.
-3. Тест підміни назви:
-   - з назвою продукту **іншої категорії** момент має розвалитись, інакше це декорація;
-   - якщо він пасує **конкурентам у тій самій категорії** (у всіх однакова базова механіка), це нормально, але тоді відмінність продукту має з'явитись у самому моменті або одразу в наступній секції. Запиши, де саме.
+How to find it:
+1. Complete the sentence "A person does ___, and ___ happens".
+2. Find a visual that shows this sentence with the least text. Best of all, one the visitor can try hands-on.
+3. Name-swap test:
+   - with the name of a product from **another category**, the moment must fall apart, otherwise it is decoration;
+   - if it fits **competitors in the same category** (they all share the same basic mechanic), that is fine, but then the product's difference must show up in the moment itself or in the very next section. Write down where exactly.
 
-Хід думки на різних продуктах:
-- **Менеджер вікон для Mac.** Одна клавіша повертає вікна на всіх дисплеях → стіна з трьох моніторів, де сцени перемикаються.
-- **Полотно для AI-агентів (SOFA).** Кажеш один раз, а команда агентів ділить і робить роботу → полотно з агентами, яке можна тягати, і схема процесу.
-- **Утиліта нічних бекапів для NAS** (гіпотетично, лише ілюстрація методу). Людина нічого не робить, а щоночі з'являється копія, з якої файл повертається за хвилину → ряд ночей, де вибираєш учорашню і витягаєш із неї видалений файл.
+Reasoning on different products:
+- **Mac window manager.** One key restores windows across all displays → a wall of three monitors where scenes switch.
+- **AI agent canvas (SOFA).** You say it once, and a team of agents splits up the work and does it → a canvas of agents you can drag around, and a process diagram.
+- **Nightly backup utility for a NAS** (hypothetical, only to illustrate the method). The person does nothing, and every night a copy appears from which a file can be restored in a minute → a row of nights where you pick last night and pull a deleted file out of it.
 
-Фірмовий момент попереднього лендингу не переноситься. Якщо рука тягнеться знову зробити схему процесу, бенто чи стіну, перевір, чи є в цьому продукті той самий факт, що їх виправдав.
+The previous landing page's signature moment does not carry over. If your hand reaches for a process diagram, a bento or a wall again, check whether this product has the same fact that justified them.
 
-## 4. Порядок і обсяг
+## 4. Order and length
 
-- **Порядок** іде за головою відвідувача: що це → покажи → чому інакше і чому вірити → як отримати. Переставляй під рівень обізнаності (§1).
-- **Секція існує,** лише коли відповідає на ще не закрите питання.
-- **Тест на викреслення:** подумки прибери секцію. Якщо відвідувач нічого не втратив, прибирай і на сторінці.
-- **Кількість** дорівнює кількості справжніх питань. Буває 4, буває 9. Сама цифра не мета.
-- **Прийоми заголовків** різні між секціями, але з однієї лексики продукту.
+- **Order** follows the visitor's train of thought: what it is → show it → why it is different and why believe it → how to get it. Rearrange for the awareness level (§1).
+- **A section exists** only when it answers a question that is still open.
+- **Strike-out test:** mentally remove a section. If the visitor lost nothing, remove it on the page too.
+- **Count** equals the number of real questions. Sometimes 4, sometimes 9. The number itself is not the goal.
+- **Headline devices** differ between sections but come from the same product vocabulary.
 
-## 5. Карта секцій у брифі
+## 5. Section map in the brief
 
-Формат обовʼязковий, бо останній стовпчик і є перевіркою на шаблонність:
+The format is mandatory, because the last column is the template check:
 
-| # | Питання відвідувача | Відповідь одним реченням | Форма | Який факт цього продукту вимагає цієї форми |
+| # | Visitor question | One-sentence answer | Form | Which fact about this product calls for this form |
 |---|---|---|---|---|
 
-Якщо в останньому стовпчику «так прийнято», «так було в SOFA» чи «виглядає ефектно», то форму треба замінити.
+If the last column says "that's the convention", "that's how SOFA did it" or "looks impressive", replace the form.
 
-## 6. Копірайт
+## 6. Copywriting
 
-- **Одиниці продукту замість епітетів:** числа, строки, назви реальних станів і дій.
-- **Мова користувача, а не системи:** людина «ставить на паузу», а не «змінює статус задачі».
-- **Короткі заголовки** до ~6 слів, підзаголовки до ~20–25 слів.
-- **Одна назва дії всюди:** та сама фраза на кнопці в меню, у першому екрані й у фінальній формі. Стани після дії теж словами: «You’re in», «Already on the list».
-- **Помилки** пояснюють, що сталось і що робити.
-- **Без** довгих тире, без «seamless / unleash / elevate», без «Quietly trusted by».
-- **Гумор** рідкий і лише тоді, коли він пасує голосу бренду.
-- **Кожен рядок перечитай двічі:** чи це правда, чи зрозуміло, про що мова, чи не звучить розумно-порожньо.
+- **Product units instead of epithets:** numbers, durations, names of real states and actions.
+- **The user's language, not the system's:** a person "pauses", they don't "change the task status".
+- **Short headlines** up to ~6 words, subheadlines up to ~20–25 words.
+- **One name for the action everywhere:** the same phrase on the menu button, in the first screen and in the final form. States after the action are words too: "You’re in", "Already on the list".
+- **Errors** explain what happened and what to do.
+- **No** em dashes, no "seamless / unleash / elevate", no "Quietly trusted by".
+- **Humor** is rare and only when it fits the brand voice.
+- **Reread every line twice:** is it true, is it clear what it is about, does it sound smart but empty.
