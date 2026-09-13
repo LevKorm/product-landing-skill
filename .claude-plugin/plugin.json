@@ -1,0 +1,12 @@
+{
+  "name": "product-landing",
+  "version": "1.0.0",
+  "description": "Builds a product landing page from the product itself, not from a template: facts and brief, sections from visitor questions, one signature moment, a design language from the product's world, feedback rounds, mobile, Vercel deploy and an optional Supabase waitlist.",
+  "author": {
+    "name": "LevKorm",
+    "url": "https://github.com/LevKorm"
+  },
+  "repository": "https://github.com/LevKorm/product-landing-skill",
+  "license": "MIT",
+  "keywords": ["landing-page", "skill", "design", "copywriting", "vercel", "supabase", "waitlist"]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "product-landing-skill",
+  "description": "A Claude Code skill for product landing pages that take the shape of the product.",
+  "owner": {
+    "name": "LevKorm",
+    "url": "https://github.com/LevKorm"
+  },
+  "plugins": [
+    {
+      "name": "product-landing",
+      "source": "./",
+      "description": "Builds a product landing page from the product itself, not from a template.",
+      "version": "1.0.0",
+      "author": {
+        "name": "LevKorm"
+      },
+      "repository": "https://github.com/LevKorm/product-landing-skill",
+      "license": "MIT",
+      "keywords": [
+        "landing-page",
+        "skill",
+        "design",
+        "vercel",
+        "supabase"
+      ]
+    }
+  ]
+}
