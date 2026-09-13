@@ -1,0 +1,617 @@
+<title>product-landing · Claude Code skill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#12151B; --muted:#5B6270; --line:#DDE1E7; --tile:#F2F4F7; --tile-2:#E7EAEF;
+  --accent:#FF5A26; --on-accent:#12151B; --accent-text:#C2410C; --dash:#B9C0CA;
+  --sans:"Schibsted Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r-s:8px; --r-m:12px; --r-l:20px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1014; --ink:#EEF0F3; --muted:#9AA3AF; --line:#272B33; --tile:#181B21; --tile-2:#21252C;
+    --accent:#FF6A3D; --on-accent:#12151B; --accent-text:#FF8A62; --dash:#4B515B;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1014; --ink:#EEF0F3; --muted:#9AA3AF; --line:#272B33; --tile:#181B21; --tile-2:#21252C;
+  --accent:#FF6A3D; --on-accent:#12151B; --accent-text:#FF8A62; --dash:#4B515B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ic{width:18px;height:18px;fill:currentColor;flex:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid transparent;transition:border-color .2s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--mono);font-weight:500;font-size:15px}
+.mark{display:grid;gap:2px;width:18px}
+.mark i{display:block;height:4px;border-radius:2px;background:var(--tile-2)}
+.mark i:first-child{height:7px;background:var(--accent)}
+.nav nav{display:flex;gap:24px;margin-left:auto}
+.nav nav a{text-decoration:none;color:var(--muted);font-size:15px;font-weight:500}
+.nav nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--r-m);border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .12s}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--tile)}
+
+/* hero */
+.hero{padding:64px 0 96px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,13fr);gap:48px;align-items:start}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;color:var(--muted)}
+.tag b{font-weight:500;color:var(--ink)}
+.tag .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+h1{font-size:64px;line-height:1;letter-spacing:-.04em;font-weight:800;margin:24px 0 0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:19px;line-height:1.45;color:var(--muted);margin:24px 0 0;max-width:34ch}
+.cmd{display:flex;align-items:center;gap:8px;margin-top:32px;border:1.5px solid var(--ink);border-radius:var(--r-m);padding:6px 6px 6px 14px;max-width:100%;background:var(--bg)}
+.cmd code{font-family:var(--mono);font-size:13.5px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.cmd code::-webkit-scrollbar{display:none}
+.cmd code span{color:var(--muted)}
+.copy{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border-radius:var(--r-s);border:0;background:var(--tile);font-size:13px;font-weight:600;cursor:pointer;flex:none}
+.copy:hover{background:var(--tile-2)}
+.copy.icon{width:32px;padding:0;justify-content:center}
+.copy.icon span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.hero .cmd code{font-size:13px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
+.hero-actions small{color:var(--muted);font-size:14px}
+
+/* board: the signature */
+.board{border:1.5px solid var(--line);border-radius:var(--r-l);padding:20px;background:var(--bg)}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:-2px;padding:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:1px;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r-m);padding:8px 12px;cursor:pointer;text-align:left}
+.tab b{font-size:14px;font-weight:600;line-height:1.2}
+.tab span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.tab[aria-selected="true"] span{color:var(--bg);opacity:.7}
+.sentence{font-size:19px;line-height:1.45;margin:20px 2px 0;min-height:56px;text-wrap:pretty}
+.blank{font-weight:700;background:linear-gradient(var(--accent),var(--accent)) no-repeat 0 100%/100% 2px;padding-bottom:1px;transition:opacity .2s}
+.sentence.swap .blank{opacity:0}
+.board-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:18px}
+.stack{min-height:404px}
+.blk{display:flex;align-items:center;width:100%;height:36px;margin:0 0 6px;padding:0 12px;border-radius:var(--r-s);border:1.5px solid transparent;background:var(--tile);font-size:13.5px;font-weight:500;line-height:1.2;text-align:left;cursor:pointer;overflow:hidden;
+  transition:height .45s cubic-bezier(.2,.8,.2,1),margin .45s cubic-bezier(.2,.8,.2,1),opacity .3s,background-color .3s,border-color .3s,color .3s}
+.blk span{transition:opacity .18s}
+.stack.swap .blk span{opacity:0}
+.blk:hover{background:var(--tile-2)}
+.blk.sig{background:var(--accent);color:var(--on-accent);font-weight:700}
+.blk.opt{background:transparent;border:1.5px dashed var(--dash);color:var(--muted)}
+.blk.gone{height:0!important;margin:0;opacity:0;pointer-events:none;border-width:0}
+.blk[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink)}
+.fact{border-left:1.5px solid var(--line);padding-left:20px;display:flex;flex-direction:column;min-width:0}
+.fact .k{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.fact h3{font-size:21px;line-height:1.2;letter-spacing:-.015em;margin:6px 0 0;font-weight:700;text-wrap:balance}
+.fact .why{margin:18px 0 0;font-family:var(--mono);font-size:12.5px;color:var(--accent-text);display:flex;align-items:center;gap:6px}
+.fact .why:before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.fact p{margin:6px 0 0;font-size:16px;line-height:1.45}
+.meta{margin-top:auto;padding-top:20px;display:grid;gap:8px;font-size:14px;color:var(--muted)}
+.meta div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:8px}
+.meta b{color:var(--ink);font-weight:600;text-align:right}
+.meta a{color:var(--accent-text);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.meta a .ic{width:14px;height:14px}
+.fact.swap > *{opacity:0}
+.fact > *{transition:opacity .18s}
+.legend{display:flex;gap:16px;margin-top:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:10px;border-radius:3px;background:var(--accent)}
+.legend i.o{background:transparent;border:1.5px dashed var(--dash)}
+.legend i.t{background:var(--tile-2)}
+
+/* sections */
+section.sec{padding:96px 0;border-top:1px solid var(--line)}
+.sec-h{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;margin-bottom:48px}
+h2{font-size:46px;line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:0;text-wrap:balance;max-width:16ch}
+.sec-h p{margin:0;font-size:18px;line-height:1.5;color:var(--muted);max-width:44ch}
+
+/* template check */
+.check{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:start}
+.check-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
+.check-top .k{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:28px minmax(0,1fr) 112px;gap:4px 14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.row .n{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:2px}
+.row .name{font-size:17px;font-weight:600;line-height:1.3;transition:color .3s}
+.row .v{justify-self:end;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 9px;border-radius:999px;font-size:12.5px;font-weight:600;font-family:var(--mono);background:var(--tile);color:var(--muted);opacity:.55;transition:opacity .3s,background-color .3s,color .3s}
+.row .v .ic{width:14px;height:14px}
+.row .detail{grid-column:2 / 4;font-size:15px;line-height:1.45;color:var(--muted);max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .35s ease}
+.row .detail b{color:var(--ink);font-weight:600}
+.row .detail .to{display:inline-flex;align-items:center;gap:6px;color:var(--accent-text);font-weight:600}
+.row .detail .to .ic{width:14px;height:14px}
+.row.done .detail{max-height:120px;opacity:1}
+.row.done .v{opacity:1}
+.row.cut .name{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.row.cut .v{background:var(--tile);color:var(--muted)}
+.row.kept .v{background:var(--ink);color:var(--bg)}
+.row.repl .v{background:var(--accent);color:var(--on-accent)}
+.row.active{background:linear-gradient(90deg,var(--tile),transparent)}
+.result{position:sticky;top:96px;border:1.5px solid var(--line);border-radius:var(--r-l);padding:22px}
+.result .k{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.count{display:flex;align-items:baseline;gap:12px;margin:6px 0 18px}
+.count b{font-size:56px;line-height:1;letter-spacing:-.04em;font-weight:800;font-variant-numeric:tabular-nums}
+.count span{font-size:15px;color:var(--muted)}
+.result .blk{cursor:default;height:44px}
+.result .blk.sig{height:64px}
+.result .blk:hover{background:var(--tile)}
+.result .blk.sig:hover{background:var(--accent)}
+.result .blk.opt:hover{background:transparent}
+.result .stack2{min-height:260px}
+.result .stack2 .blk{opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.result.on .stack2 .blk{opacity:1;transform:none}
+.result .foot{margin:12px 0 0;font-size:14px;color:var(--muted)}
+
+/* phases */
+.phases{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.ph{display:grid;grid-template-columns:44px minmax(180px,2.2fr) minmax(0,5fr) minmax(0,2.4fr);gap:18px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.ph .i{width:40px;height:40px;border-radius:var(--r-m);background:var(--tile);display:grid;place-items:center}
+.ph .i .ic{width:20px;height:20px}
+.ph h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.ph p{margin:0;font-size:16px;line-height:1.45;color:var(--muted)}
+.ph .file{justify-self:end;font-family:var(--mono);font-size:13px;padding:6px 10px;border:1.5px solid var(--line);border-radius:var(--r-s);white-space:nowrap;text-align:right}
+.ph.gate .i{background:var(--accent);color:var(--on-accent)}
+.ph.gate h3:after{content:" · gate";font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--accent-text)}
+
+/* proof */
+.proof{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
+.shot{display:block;border:1.5px solid var(--line);border-radius:var(--r-l);overflow:hidden;text-decoration:none;background:var(--tile);transition:transform .2s,border-color .2s}
+.shot:hover{border-color:var(--ink)}
+.shot .bar{display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-bottom:1.5px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:13px;color:var(--muted)}
+.shot .bar i{width:10px;height:10px;border-radius:50%;background:var(--tile-2)}
+.shot .bar span{margin-left:8px}
+.shot img{display:block;width:100%;height:auto}
+.proof h3{font-size:28px;line-height:1.15;letter-spacing:-.02em;margin:0;font-weight:800}
+.proof p{margin:14px 0 0;font-size:17px;line-height:1.5;color:var(--muted)}
+.proof ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:8px}
+.proof li{display:flex;gap:10px;font-size:15px;line-height:1.45}
+.proof li .ic{color:var(--accent-text);margin-top:2px}
+.proof .note{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+
+/* install */
+.install{border:1.5px solid var(--ink);border-radius:var(--r-l);padding:48px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px}
+.install h2{max-width:12ch}
+.install .sub{margin:16px 0 0;font-size:18px;color:var(--muted);max-width:36ch}
+.steps{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-content:start;min-width:0}
+.step{min-width:0}
+.step .k{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:6px}
+.step .cmd{margin-top:0}
+.ask{border-radius:var(--r-m);background:var(--tile);padding:12px 14px;font-size:16px}
+.ask:before{content:"> ";font-family:var(--mono);color:var(--accent-text)}
+.install .row-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.install .fine{margin:20px 0 0;font-size:14px;color:var(--muted);line-height:1.55}
+
+footer{padding:40px 0 56px}
+footer .wrap{display:flex;gap:20px;align-items:center;color:var(--muted);font-size:14px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+footer .brand{color:var(--ink);margin-right:auto}
+
+@media (max-width: 1040px){
+  h1{font-size:54px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
+  .lead{max-width:48ch}
+  .check,.proof,.install{grid-template-columns:minmax(0,1fr);gap:32px}
+  .result{position:static}
+  .sec-h{grid-template-columns:minmax(0,1fr);gap:16px}
+  .ph{grid-template-columns:44px minmax(0,1fr);gap:6px 16px}
+  .ph h3{align-self:end}
+  .ph p,.ph .file{grid-column:2}
+  .ph .file{justify-self:start}
+}
+@media (max-width: 760px){
+  .wrap{padding:0 20px}
+  .nav nav{display:none}
+  .nav .btn{margin-left:auto;height:36px;padding:0 12px}
+  .hero{padding:36px 0 64px}
+  h1{font-size:42px}
+  .lead{font-size:17px}
+  .board{padding:14px;border-radius:16px}
+  .board-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .stack{min-height:0}
+  .fact{border-left:0;padding-left:0;border-top:1.5px solid var(--line);padding-top:14px}
+  .sentence{font-size:17px;min-height:0}
+  section.sec{padding:64px 0}
+  h2{font-size:34px}
+  .sec-h{margin-bottom:28px}
+  .sec-h p{font-size:16px}
+  .row{grid-template-columns:24px minmax(0,1fr);}
+  .row .v{grid-column:2;justify-self:start;margin-top:4px}
+  .row .detail{grid-column:2}
+  .count b{font-size:44px}
+  .ph{padding:16px 0}
+  .ph p{font-size:15px}
+  .ph .i{width:36px;height:36px}
+  .install{padding:24px;border-radius:16px}
+  .proof h3{font-size:24px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*:before,*:after{transition:none!important;animation:none!important}
+}
+</style>
+
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></symbol>
+<symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M228,48V96a12,12,0,0,1-12,12H168a12,12,0,0,1,0-24h19l-7.8-7.8a75.55,75.55,0,0,0-53.32-22.26h-.43A75.49,75.49,0,0,0,72.39,75.57,12,12,0,1,1,55.61,58.41a99.38,99.38,0,0,1,69.87-28.47H126A99.42,99.42,0,0,1,196.2,59.23L204,67V48a12,12,0,0,1,24,0ZM183.61,180.43a75.49,75.49,0,0,1-53.09,21.63h-.43A75.55,75.55,0,0,1,76.77,179.8L69,172H88a12,12,0,0,0,0-24H40a12,12,0,0,0-12,12v48a12,12,0,0,0,24,0V189l7.8,7.8A99.42,99.42,0,0,0,130,226.06h.56a99.38,99.38,0,0,0,69.87-28.47,12,12,0,0,0-16.78-17.16Z"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 256 256"><path d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 256 256"><path d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"/></symbol>
+<symbol id="i-file-html" viewBox="0 0 256 256"><path d="M48,128a12,12,0,0,0,12-12V44h76V92a12,12,0,0,0,12,12h48v12a12,12,0,0,0,24,0V88a12,12,0,0,0-3.51-8.49l-56-56A12,12,0,0,0,152,20H56A20,20,0,0,0,36,40v76A12,12,0,0,0,48,128ZM183,80H160V57ZM68,160v48a12,12,0,0,1-24,0V196H32v12a12,12,0,0,1-24,0V160a12,12,0,0,1,24,0v12H44V160a12,12,0,0,1,24,0Zm60,0a12,12,0,0,1-12,12h-4v36a12,12,0,0,1-24,0V172H84a12,12,0,0,1,0-24h32A12,12,0,0,1,128,160Zm72,0v48a12,12,0,0,1-24,0v-9.36l-.11.16a12,12,0,0,1-19.78,0l-.11-.16V208a12,12,0,0,1-24,0V160a12,12,0,0,1,21.89-6.8L166,170.82l12.11-17.62A12,12,0,0,1,200,160Zm56,48a12,12,0,0,1-12,12H220a12,12,0,0,1-12-12V160a12,12,0,0,1,24,0v36h12A12,12,0,0,1,256,208Z"/></symbol>
+<symbol id="i-github-logo" viewBox="0 0 256 256"><path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"/></symbol>
+<symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z"/></symbol>
+<symbol id="i-minus-circle" viewBox="0 0 256 256"><path d="M180,128a12,12,0,0,1-12,12H88a12,12,0,0,1,0-24h80A12,12,0,0,1,180,128Zm56,0A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"/></symbol>
+<symbol id="i-palette" viewBox="0 0 256 256"><path d="M203.57,51A107.9,107.9,0,0,0,20,128c0,44.72,27.6,82.25,72,97.94A36,36,0,0,0,140,192a12,12,0,0,1,12-12h46.21a35.79,35.79,0,0,0,35.1-28A108.6,108.6,0,0,0,236,127.09,107.23,107.23,0,0,0,203.57,51Zm6.34,95.67a11.91,11.91,0,0,1-11.7,9.3H152a36,36,0,0,0-36,36,12,12,0,0,1-16,11.3c-16.65-5.88-30.65-15.76-40.48-28.56A76,76,0,0,1,44,128a84,84,0,0,1,83.13-84H128a84.35,84.35,0,0,1,84,83.29A84.72,84.72,0,0,1,209.91,146.71ZM144,76a16,16,0,1,1-16-16A16,16,0,0,1,144,76Zm-44,24A16,16,0,1,1,84,84,16,16,0,0,1,100,100Zm0,56a16,16,0,1,1-16-16A16,16,0,0,1,100,156Zm88-56a16,16,0,1,1-16-16A16,16,0,0,1,188,100Z"/></symbol>
+<symbol id="i-rocket-launch" viewBox="0 0 256 256"><path d="M227.85,46.89a20,20,0,0,0-18.74-18.74c-13.13-.77-46.65.42-74.48,28.24L131,60H74.36a19.83,19.83,0,0,0-14.14,5.86L25.87,100.19a20,20,0,0,0,11.35,33.95l37.14,5.18,42.32,42.32,5.19,37.18A19.88,19.88,0,0,0,135.34,235a20.13,20.13,0,0,0,6.37,1,19.9,19.9,0,0,0,14.1-5.87l34.34-34.35A19.85,19.85,0,0,0,196,181.64V125l3.6-3.59C227.43,93.54,228.62,60,227.85,46.89ZM76,84h31L75.75,115.28l-27.23-3.8ZM151.6,73.37A72.27,72.27,0,0,1,204,52a72.17,72.17,0,0,1-21.38,52.41L128,159,97,128ZM172,180l-27.49,27.49-3.8-27.23L172,149Zm-72,22c-8.71,11.85-26.19,26-60,26a12,12,0,0,1-12-12c0-33.84,14.12-51.32,26-60A12,12,0,1,1,68.18,175.3C62.3,179.63,55.51,187.8,53,203c15.21-2.51,23.37-9.3,27.7-15.18A12,12,0,1,1,100,202Z"/></symbol>
+<symbol id="i-rows" viewBox="0 0 256 256"><path d="M208,136H48a20,20,0,0,0-20,20v36a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V156A20,20,0,0,0,208,136Zm-4,52H52V160H204Zm4-144H48A20,20,0,0,0,28,64v36a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V64A20,20,0,0,0,208,44Zm-4,52H52V68H204Z"/></symbol>
+<symbol id="i-swap" viewBox="0 0 256 256"><path d="M228,48V152a20,20,0,0,1-20,20H112.92a12,12,0,0,1-17.41,16.49l-20-20a12,12,0,0,1,0-17l20-20A12,12,0,0,1,112.92,148H204V52H100a12,12,0,0,1-24,0V48A20,20,0,0,1,96,28H208A20,20,0,0,1,228,48ZM168,192a12,12,0,0,0-12,12H52V108h91.08a12,12,0,0,0,17.41,16.49l20-20a12,12,0,0,0,0-17l-20-20A12,12,0,0,0,143.08,84H48a20,20,0,0,0-20,20V208a20,20,0,0,0,20,20H160a20,20,0,0,0,20-20v-4A12,12,0,0,0,168,192Z"/></symbol>
+<symbol id="i-target" viewBox="0 0 256 256"><path d="M229.26,90.4a108,108,0,0,1-177.63,114A108,108,0,0,1,195.41,43.63l20.1-20.11a12,12,0,0,1,17,17l-96,96a12,12,0,1,1-17-17l24-24a36,36,0,1,0,19.76,39.65,12,12,0,0,1,23.53,4.74,60,60,0,1,1-25.73-62L178.3,60.74a84,84,0,1,0,28.46,38,12,12,0,1,1,22.5-8.35Z"/></symbol>
+<symbol id="i-x-circle" viewBox="0 0 256 256"><path d="M168.49,104.49,145,128l23.52,23.51a12,12,0,0,1-17,17L128,145l-23.51,23.52a12,12,0,0,1-17-17L111,128,87.51,104.49a12,12,0,0,1,17-17L128,111l23.51-23.52a12,12,0,0,1,17,17ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"/></symbol>
+<symbol id="i-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol>
+</svg>
+
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="product-landing, back to top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>product-landing</a>
+    <nav aria-label="Sections">
+      <a href="#check">The check</a>
+      <a href="#phases">Phases</a>
+      <a href="#proof">Built with it</a>
+      <a href="#install">Install</a>
+    </nav>
+    <a class="btn ghost" href="https://github.com/LevKorm/product-landing-skill"><svg class="ic" aria-hidden="true"><use href="#i-github-logo"/></svg>GitHub</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tag"><span class="dot"></span><b>Claude Code skill</b> · open source</div>
+      <h1>The page takes the shape of <em>the product.</em></h1>
+      <p class="lead">A skill that builds a landing page from your product’s facts. Every section has to name the fact behind it. The rest gets cut, and the page ships to Vercel.</p>
+      <div class="cmd">
+        <code><span>/plugin marketplace add</span> LevKorm/product-landing-skill</code>
+        <button class="copy icon" type="button" aria-label="Copy install command" data-copy="/plugin marketplace add LevKorm/product-landing-skill"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href="#install">Install</a>
+        <a class="btn ghost" href="https://github.com/LevKorm/product-landing-skill"><svg class="ic" aria-hidden="true"><use href="#i-github-logo"/></svg>View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="board" id="board">
+      <div class="tabs" role="tablist" aria-label="Products">
+        <button class="tab" role="tab" data-p="wm" aria-selected="true"><b>Mac window manager</b><span>5 sections</span></button>
+        <button class="tab" role="tab" data-p="sofa" aria-selected="false"><b>AI agent canvas</b><span>9 sections</span></button>
+        <button class="tab" role="tab" data-p="cards" aria-selected="false"><b>Flashcards app</b><span>4 sections</span></button>
+        <button class="tab" role="tab" data-p="api" aria-selected="false"><b>Invoice API</b><span>3 + 2 sections</span></button>
+      </div>
+      <p class="sentence" aria-live="polite"><span data-f="who">A person</span> <span class="blank" data-f="does">presses one key</span>, and <span class="blank" data-f="happens">every window returns to its place on every display</span>.</p>
+      <div class="board-grid">
+        <div class="stack" id="stack" aria-label="Section map">
+          <button class="blk sig" type="button" style="height:76px"><span>Wall of monitors switching scenes</span></button>
+          <button class="blk" type="button" style="height:50px"><span>Three ways to call a scene</span></button>
+          <button class="blk" type="button" style="height:50px"><span>Scenes switch by themselves</span></button>
+          <button class="blk" type="button" style="height:50px"><span>What if the desk changes</span></button>
+          <button class="blk" type="button"><span>Free and Pro</span></button>
+          <button class="blk gone" type="button" tabindex="-1"><span></span></button>
+          <button class="blk gone" type="button" tabindex="-1"><span></span></button>
+          <button class="blk gone" type="button" tabindex="-1"><span></span></button>
+          <button class="blk gone" type="button" tabindex="-1"><span></span></button>
+        </div>
+        <div class="fact" id="fact">
+          <div class="k">Section 1 of 5 · signature moment</div>
+          <h3>Wall of monitors switching scenes</h3>
+          <div class="why">Why this form</div>
+          <p>The value is one instant change across several displays, so the page shows that change first.</p>
+          <div class="meta">
+            <div><span>Category</span><b>Familiar</b></div>
+            <div><span>Access</span><b>Download, one-time Pro</b></div>
+            <div><span>Status</span><b>Real landing, not public yet</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="legend"><span><i></i>signature moment</span><span><i class="o"></i>only with facts</span><span><i class="t"></i>section</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="check">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Ask for a landing page, get the usual one.</h2>
+      <p>Here is the usual section map, put through the skill’s template check for an invoice API. Each form has to name a fact about the product. Forms without one get cut or replaced.</p>
+    </div>
+    <div class="check">
+      <div>
+        <div class="check-top">
+          <span class="k">Usual map · Invoice API</span>
+          <button class="btn ghost" type="button" id="run"><svg class="ic" aria-hidden="true"><use href="#i-arrows-clockwise"/></svg><span>Run the template check</span></button>
+        </div>
+        <ol class="rows" id="rows">
+          <li class="row" data-v="repl"><span class="n">01</span><span class="name">Hero with a product screenshot</span><span class="v"></span><span class="detail">An API has no screen to show. <span class="to"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>A lens reads the invoice into JSON</span></span></li>
+          <li class="row" data-v="cut"><span class="n">02</span><span class="name">Three feature cards</span><span class="v"></span><span class="detail">There are four fields, and the hero already shows them.</span></li>
+          <li class="row" data-v="repl"><span class="n">03</span><span class="name">How it works in three steps</span><span class="v"></span><span class="detail">Developers judge an integration by its code. <span class="to"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>One curl, same fields</span></span></li>
+          <li class="row" data-v="cut"><span class="n">04</span><span class="name">Comparison table</span><span class="v"></span><span class="detail">No verified advantage over other invoice APIs yet. Left as an open question.</span></li>
+          <li class="row" data-v="repl"><span class="n">05</span><span class="name">Testimonials</span><span class="v"></span><span class="detail">No customers yet, and proof can’t be made up. <span class="to"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>Hard invoices, only with verified cases</span></span></li>
+          <li class="row" data-v="kept"><span class="n">06</span><span class="name">Pricing</span><span class="v"></span><span class="detail">Kept, in the product’s own unit: a document. <span class="to"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>Pricing written as an invoice</span></span></li>
+          <li class="row" data-v="repl"><span class="n">07</span><span class="name">FAQ</span><span class="v"></span><span class="detail">The one real question is about client data. <span class="to"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>Your data, only with facts</span></span></li>
+        </ol>
+      </div>
+      <aside class="result" id="result" aria-live="polite">
+        <div class="k">Section map after the check</div>
+        <div class="count"><b id="count">7</b><span id="count-note">usual sections</span></div>
+        <div class="stack2">
+          <div class="blk sig"><span>A lens reads the invoice into JSON</span></div>
+          <div class="blk"><span>One curl, same fields</span></div>
+          <div class="blk"><span>Pricing written as an invoice</span></div>
+          <div class="blk opt"><span>Hard invoices</span></div>
+          <div class="blk opt"><span>Your data</span></div>
+        </div>
+        <p class="foot">From a dry run of the skill on an invoice API brief.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="phases">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Every phase leaves a file.</h2>
+      <p>So the next chat, or you next week, doesn’t start from zero. And nothing reaches code before the template check.</p>
+    </div>
+    <ol class="phases">
+      <li class="ph"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-magnifying-glass"/></svg></span><h3>Facts and brief</h3><p>Reads memory, docs and code. Every claim gets a source. Anything it can’t verify becomes an open question.</p><span class="file">docs/landing/brief.md</span></li>
+      <li class="ph"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-rows"/></svg></span><h3>Visitor questions</h3><p>Keeps only the questions this visitor has, and picks a form for each one from a menu with conditions.</p><span class="file">section map</span></li>
+      <li class="ph"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg></span><h3>Signature moment</h3><p>Completes “a person does ___, and ___ happens”, then finds the visual that shows it with the least text.</p><span class="file">brief.md · mechanic</span></li>
+      <li class="ph"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg></span><h3>Visual language</h3><p>Colors with one meaning each, fonts and devices taken from the product’s world. Checked against AI clichés.</p><span class="file">design plan</span></li>
+      <li class="ph gate"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg></span><h3>Template check</h3><p>Each section names the fact that demands its form. “It worked on another landing” doesn’t count.</p><span class="file">fact column</span></li>
+      <li class="ph"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-file-html"/></svg></span><h3>Build and feedback</h3><p>One HTML file to review as a Claude artifact. Big turns become versions. Your taste carries to the next product.</p><span class="file">index.html · taste-profile.md</span></li>
+      <li class="ph"><span class="i"><svg class="ic" aria-hidden="true"><use href="#i-rocket-launch"/></svg></span><h3>Ship</h3><p>Mobile pass, OG image and favicon, Vercel deploy, and an insert-only Supabase waitlist when the product needs one.</p><span class="file">build.sh · early_birds.sql</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="proof">
+  <div class="wrap proof">
+    <a class="shot" href="https://trysofa.vercel.app">
+      <div class="bar"><i></i><i></i><i></i><span>trysofa.vercel.app</span></div>
+      <img src="example-sofa.png" width="1200" height="630" alt="SOFA landing page: headline “Figma for vibe coding.” above a live canvas with AI agent panels" loading="lazy">
+    </a>
+    <div>
+      <div class="tag"><span class="dot"></span><b>Built with it</b></div>
+      <h3 style="margin-top:16px">SOFA, a canvas where AI coding agents work side by side.</h3>
+      <p>A new category, so the page explains the mechanic instead of listing features.</p>
+      <ul>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>A canvas you can drag, because the product is a canvas.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>A process map, because a long branching process runs by itself.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>A waitlist, because it isn’t on sale yet.</span></li>
+      </ul>
+      <p class="note">The window manager page isn’t public yet. The flashcards app and the invoice API are dry runs: a brief and a section map, no HTML.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="install">
+  <div class="wrap">
+    <div class="install">
+      <div>
+        <h2>Install it in Claude Code.</h2>
+        <p class="sub">Free and MIT-licensed. Then ask for a landing page the way you normally would.</p>
+        <div class="row-btns">
+          <a class="btn" href="https://github.com/LevKorm/product-landing-skill"><svg class="ic" aria-hidden="true"><use href="#i-github-logo"/></svg>View on GitHub</a>
+        </div>
+        <p class="fine">Optional, only for the phases that use them: Vercel CLI, Supabase, Google Chrome for the OG image. The skill’s instructions are in Ukrainian; Claude answers in your language.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="k">1 · Add the marketplace</div>
+          <div class="cmd"><code><span>/plugin marketplace add</span> LevKorm/product-landing-skill</code><button class="copy" type="button" data-copy="/plugin marketplace add LevKorm/product-landing-skill"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button></div>
+        </div>
+        <div class="step">
+          <div class="k">2 · Install the skill</div>
+          <div class="cmd"><code><span>/plugin install</span> product-landing@product-landing-skill</code><button class="copy" type="button" data-copy="/plugin install product-landing@product-landing-skill"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button></div>
+        </div>
+        <div class="step">
+          <div class="k">3 · Ask</div>
+          <div class="ask">Make a landing page for our app. Look at the repo first.</div>
+        </div>
+        <div class="step">
+          <div class="k">Or copy the folder by hand</div>
+          <div class="cmd"><code><span>git clone</span> https://github.com/LevKorm/product-landing-skill.git <span>&amp;&amp; cp -R</span> product-landing-skill/skills/product-landing ~/.claude/skills/</code><button class="copy" type="button" data-copy="git clone https://github.com/LevKorm/product-landing-skill.git && cp -R product-landing-skill/skills/product-landing ~/.claude/skills/"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>product-landing</a>
+    <a href="https://github.com/LevKorm/product-landing-skill">GitHub</a>
+    <a href="https://github.com/LevKorm/product-landing-skill/blob/main/LICENSE">MIT License</a>
+    <a href="https://trysofa.vercel.app">SOFA</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.querySelector('.nav');
+  addEventListener('scroll', function(){ nav.classList.toggle('scrolled', scrollY > 8); }, {passive:true});
+
+  // copy buttons
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var label = b.querySelector('span'), use = b.querySelector('use');
+      function done(ok){
+        label.textContent = ok ? 'Copied' : 'Select';
+        if (ok) use.setAttribute('href', '#i-check');
+        setTimeout(function(){ label.textContent = 'Copy'; use.setAttribute('href', '#i-copy'); }, 1600);
+        if (!ok){ var r = document.createRange(); r.selectNodeContents(b.previousElementSibling); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      }
+      try { navigator.clipboard.writeText(b.dataset.copy).then(function(){ done(true); }, function(){ done(false); }); }
+      catch(e){ done(false); }
+    });
+  });
+
+  // ---------- signature: the section map takes the shape of each product ----------
+  var H = {l:76, m:50, s:36};
+  var P = {
+    wm: {does:'presses one key', happens:'every window returns to its place on every display',
+      meta:[['Category','Familiar'],['Access','Download, one-time Pro'],['Status','Real landing, not public yet']],
+      s:[['sig','l','Wall of monitors switching scenes','The value is one instant change across several displays, so the page shows that change first.'],
+         ['','m','Three ways to call a scene','The app really has three entry points: under the notch, on the keyboard, in the menu bar.'],
+         ['','m','Scenes switch by themselves','Pro applies a scene when a display connects, an app opens or a meeting starts.'],
+         ['','m','What if the desk changes','The main objection is that it breaks when cables, apps or the laptop move. The page answers it case by case.'],
+         ['','s','Free and Pro','Free to start, Pro is a one-time purchase, so a short pricing table is enough.']]},
+    sofa: {does:'says it once', happens:'a crew of AI agents splits, runs and checks the work',
+      meta:[['Category','New'],['Access','Waitlist'],['Status','<a href="https://trysofa.vercel.app">Live<svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>']],
+      s:[['sig','m','Canvas you can drag','The product is a canvas, so the best proof is dragging it.'],
+         ['','s','Who is in the room','The idea lives in how the roles talk to each other.'],
+         ['','m','Pinned process map','A long branching process runs by itself: plan, run, review, fix, merge.'],
+         ['','s','Sit back and chill','The name SOFA carries the mood and spells out the roles.'],
+         ['','s','Feature bento','Six features of equal weight, and each one can be shown.'],
+         ['','s','Who does the work','The value is taking work off the person, so the comparison counts who does it.'],
+         ['','s','Waitlist','It isn’t on sale yet.'],
+         ['','s','Everything inside','54 features: for this product, the breadth is the argument.'],
+         ['','s','Founder quote','An early product made by one person.']]},
+    cards: {does:'rates how hard a word was', happens:'the app decides the day it comes back',
+      meta:[['Category','Familiar'],['Access','Free, then subscription'],['Status','Dry run, brief only']],
+      s:[['sig','l','Rate a card, it lands on its day','Rating a word sets the day it returns. The visitor can try it in a second.'],
+         ['','m','Your words or ready decks','Words come from exactly two places, and a deck is the unit of the free limit.'],
+         ['','m','Lock screen word and streak','It answers the category’s objection: people quit flashcard apps.'],
+         ['','m','Pricing in deck slots','The free plan is limited by decks, so decks are the price unit.']]},
+    api: {who:'A developer', does:'sends a PDF invoice', happens:'supplier, totals, VAT and line items come back as JSON',
+      meta:[['Category','Familiar'],['Access','100 free documents, then paid'],['Status','Dry run, brief only']],
+      s:[['sig','l','A lens reads the invoice into JSON','The whole product turns one object, an invoice, into another: fields.'],
+         ['','m','One curl, same fields','The audience is developers. They measure integration cost in code.'],
+         ['','m','Pricing written as an invoice','The price unit is a document, and the invoice is the product’s own object.'],
+         ['opt','s','Hard invoices','Only with verified cases. Accuracy can’t be claimed without proof.'],
+         ['opt','s','Your data','Only with facts about storage. Invoices carry client data.']]}
+  };
+  var order = ['wm','sofa','cards','api'];
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  var stack = document.getElementById('stack');
+  var blks = [].slice.call(stack.children);
+  var fact = document.getElementById('fact');
+  var sentence = document.querySelector('.sentence');
+  var cur = 'wm', sel = 0, timer = null, userTouched = false;
+
+  function renderFact(){
+    var d = P[cur], s = d.s[sel], total = d.s.length;
+    fact.classList.add('swap');
+    setTimeout(function(){
+      var role = s[0]==='sig' ? ' · signature moment' : s[0]==='opt' ? ' · only with facts' : '';
+      fact.innerHTML = '<div class="k">Section ' + (sel+1) + ' of ' + total + role + '</div>' +
+        '<h3>' + s[2] + '</h3><div class="why">Why this form</div><p>' + s[3] + '</p>' +
+        '<div class="meta">' + d.meta.map(function(m){ return '<div><span>' + m[0] + '</span><b>' + m[1] + '</b></div>'; }).join('') + '</div>';
+      fact.classList.remove('swap');
+    }, reduce ? 0 : 180);
+  }
+  function select(i){
+    sel = i;
+    blks.forEach(function(b, j){ b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    renderFact();
+  }
+  function show(p){
+    cur = p; sel = 0;
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.p === p ? 'true' : 'false'); });
+    var d = P[p];
+    stack.classList.add('swap'); sentence.classList.add('swap');
+    blks.forEach(function(b, j){
+      var s = d.s[j];
+      b.classList.toggle('gone', !s);
+      if (s){
+        b.style.height = H[s[1]] + 'px';
+        b.classList.toggle('sig', s[0]==='sig');
+        b.classList.toggle('opt', s[0]==='opt');
+        b.tabIndex = 0;
+      } else { b.style.height = ''; b.tabIndex = -1; b.classList.remove('sig','opt'); }
+    });
+    setTimeout(function(){
+      blks.forEach(function(b, j){ var s = d.s[j]; b.firstChild.textContent = s ? s[2] : ''; b.setAttribute('aria-label', s ? 'Section ' + (j+1) + ': ' + s[2] : ''); });
+      sentence.querySelector('[data-f="who"]').textContent = d.who || 'A person';
+      sentence.querySelector('[data-f="does"]').textContent = d.does;
+      sentence.querySelector('[data-f="happens"]').textContent = d.happens;
+      stack.classList.remove('swap'); sentence.classList.remove('swap');
+    }, reduce ? 0 : 180);
+    select(0);
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ userTouched = true; stop(); show(t.dataset.p); }); });
+  blks.forEach(function(b, j){ b.addEventListener('click', function(){ if (!P[cur].s[j]) return; userTouched = true; stop(); select(j); }); });
+  document.querySelector('.tabs').addEventListener('keydown', function(e){
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    var i = order.indexOf(cur) + (e.key === 'ArrowRight' ? 1 : -1);
+    i = (i + order.length) % order.length; userTouched = true; stop(); show(order[i]); tabs[i].focus();
+  });
+
+  function stop(){ clearInterval(timer); timer = null; }
+  function start(){
+    if (reduce || userTouched || timer) return;
+    timer = setInterval(function(){ show(order[(order.indexOf(cur) + 1) % order.length]); }, 5200);
+  }
+  var board = document.getElementById('board');
+  board.addEventListener('pointerenter', stop);
+  board.addEventListener('pointerleave', start);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting ? start() : stop(); }); }, {threshold:.35}).observe(board);
+  } else start();
+  blks.forEach(function(b, j){ b.setAttribute('aria-pressed', j === 0 ? 'true' : 'false'); });
+
+  // ---------- template check ----------
+  var rows = [].slice.call(document.querySelectorAll('#rows .row'));
+  var result = document.getElementById('result');
+  var countEl = document.getElementById('count'), note = document.getElementById('count-note');
+  var runBtn = document.getElementById('run'), runLabel = runBtn.querySelector('span');
+  var V = {cut:['i-x','cut'], repl:['i-swap','replaced'], kept:['i-check','kept']};
+  var running = false, ran = false, timers = [];
+  rows.forEach(function(r){ r.querySelector('.v').innerHTML = '<span>not checked</span>'; });
+
+  function reset(){
+    timers.forEach(clearTimeout); timers = [];
+    rows.forEach(function(r){ r.className = 'row'; r.querySelector('.v').innerHTML = '<span>not checked</span>'; });
+    result.classList.remove('on'); countEl.textContent = '7'; note.textContent = 'usual sections';
+  }
+  function mark(r){
+    var v = V[r.dataset.v];
+    r.classList.add('done', r.dataset.v);
+    r.querySelector('.v').innerHTML = '<svg class="ic" aria-hidden="true"><use href="#' + v[0] + '"/></svg><span>' + v[1] + '</span>';
+  }
+  function finish(){
+    result.classList.add('on'); countEl.textContent = '3 + 2'; note.textContent = 'sections the facts demand';
+    running = false; ran = true; runLabel.textContent = 'Run it again';
+  }
+  function run(){
+    if (running) return;
+    reset(); running = true; runLabel.textContent = 'Checking…';
+    if (reduce){ rows.forEach(mark); finish(); return; }
+    rows.forEach(function(r, i){
+      timers.push(setTimeout(function(){
+        rows.forEach(function(x){ x.classList.remove('active'); });
+        r.classList.add('active'); mark(r);
+        countEl.textContent = String(7 - rows.slice(0, i+1).filter(function(x){ return x.dataset.v === 'cut'; }).length);
+      }, 350 + i * 620));
+    });
+    timers.push(setTimeout(function(){ rows.forEach(function(x){ x.classList.remove('active'); }); finish(); }, 350 + rows.length * 620 + 200));
+  }
+  runBtn.addEventListener('click', run);
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting && !ran && !running){ run(); io.disconnect(); } }); }, {threshold:.45});
+    io.observe(document.getElementById('rows'));
+  } else { rows.forEach(mark); finish(); }
+})();
+</script>

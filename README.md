@@ -4,6 +4,8 @@
 
 A [Claude Code](https://claude.com/claude-code) skill for product landing pages that take the shape of the product instead of a template.
 
+**Website:** [landingskill.vercel.app](https://landingskill.vercel.app). The page itself was made with this skill; its brief is in [`docs/landing/brief.md`](docs/landing/brief.md).
+
 It walks Claude from facts to a live site. First it gathers facts about the product. Then it derives the sections from the questions a visitor has, finds one signature moment in what the product actually does, and builds a visual language from the product's own world. It iterates with you in versions, adapts the page for mobile, deploys it to Vercel and, if you need one, wires a waitlist to Supabase.
 
 [Українською ↓](#українською)
